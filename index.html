@@ -1,0 +1,4826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>भारतीय विधि संहिता | Complete Indian Legal AI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', 'Nirmala UI', sans-serif;
+      background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Tricolor flag effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%);
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '⚖️🇮🇳';
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 80px;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+
+    .ashoka-chakra {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      background: #ffffff20;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      border: 3px solid #ffffff40;
+      animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header h2 {
+      font-size: 1.5em;
+      font-weight: 300;
+      opacity: 0.95;
+      font-family: 'Nirmala UI', sans-serif;
+    }
+
+    .main {
+      padding: 30px;
+    }
+
+    .search-section {
+      background: #f8f9fa;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid #e9ecef;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    #question {
+      flex: 1;
+      min-width: 300px;
+      padding: 18px 25px;
+      border: 2px solid #dee2e6;
+      border-radius: 15px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      outline: none;
+      background: white;
+    }
+
+    #question:focus {
+      border-color: #FF9933;
+      box-shadow: 0 0 0 4px rgba(255, 153, 51, 0.1);
+    }
+
+    button {
+      padding: 18px 35px;
+      background: linear-gradient(135deg, #FF9933 0%, #F57C00 100%);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #F57C00;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 153, 51, 0.4);
+    }
+
+    /* Category Tabs */
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background: #f8f9fa;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #dee2e6;
+      font-weight: 500;
+    }
+
+    .tab:hover {
+      background: #FF9933;
+      color: white;
+      border-color: #FF9933;
+    }
+
+    .tab.active {
+      background: #1a237e;
+      color: white;
+      border-color: #1a237e;
+    }
+
+    /* Legal Database Sections */
+    .legal-database {
+      margin-top: 30px;
+    }
+
+    .database-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #FF9933;
+    }
+
+    .database-header h3 {
+      font-size: 1.6em;
+      color: #1a237e;
+      font-weight: 600;
+    }
+
+    .stats-badge {
+      background: #e8f5e9;
+      padding: 5px 15px;
+      border-radius: 20px;
+      color: #138808;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .legal-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border-left: 5px solid #FF9933;
+    }
+
+    .legal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-left-color: #138808;
+    }
+
+    .legal-card.ipc {
+      border-left-color: #FF9933;
+    }
+
+    .legal-card.constitution {
+      border-left-color: #138808;
+    }
+
+    .legal-card.act {
+      border-left-color: #1a237e;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-badge {
+      background: #f8f9fa;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: #1a237e;
+      border: 1px solid #dee2e6;
+    }
+
+    .card-header h4 {
+      font-size: 1.2em;
+      color: #212529;
+      flex: 1;
+    }
+
+    .legal-card p {
+      color: #495057;
+      line-height: 1.6;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .punishment-badge {
+      background: #fff3e0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-size: 0.9em;
+      border-left: 3px solid #FF9933;
+    }
+
+    .case-law {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 0.9em;
+      border-left: 3px solid #1a237e;
+      font-style: italic;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85em;
+      color: #6c757d;
+      border-top: 1px dashed #dee2e6;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .response-container {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid #e9ecef;
+      margin: 20px 0;
+    }
+
+    #response {
+      font-family: 'Segoe UI', 'Nirmala UI', system-ui, sans-serif;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-height: 1.8;
+      color: #212529;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+
+    .relevant-sections {
+      background: #e8f5e9;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      border-left: 5px solid #138808;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: white;
+      padding: 5px 15px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      margin: 5px;
+      border: 1px solid #138808;
+      color: #1a237e;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .section-tag:hover {
+      background: #138808;
+      color: white;
+    }
+
+    .disclaimer {
+      background: #fff3e0;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 0.95em;
+      color: #664d03;
+      border-left: 5px solid #FF9933;
+      margin-top: 20px;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #1a237e;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .loading-spinner {
+      width: 30px;
+      height: 30px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #FF9933;
+      border-right: 4px solid #138808;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .search-filters {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-input {
+      padding: 12px 20px;
+      border: 2px solid #dee2e6;
+      border-radius: 30px;
+      font-size: 15px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .suggestions {
+      margin-top: 30px;
+    }
+
+    .suggestion-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .chip {
+      padding: 10px 20px;
+      background: #f8f9fa;
+      border-radius: 30px;
+      font-size: 14px;
+      color: #1a237e;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid #dee2e6;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+
+    .chip:hover {
+      background: #FF9933;
+      color: white;
+      border-color: #FF9933;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background: #1a237e;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    .footer a {
+      color: #FF9933;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .bilingual {
+      font-family: 'Nirmala UI', 'Segoe UI', sans-serif;
+    }
+
+    .act-number {
+      color: #1a237e;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .category-tabs {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="ashoka-chakra">🛡️</div>
+      <h1>भारतीय विधि संहिता</h1>
+      <h2>Complete Indian Legal System</h2>
+      <p style="margin-top: 10px; opacity: 0.9;">संविधान | IPC | CrPC | Evidence Act | Central Acts | सत्यमेव जयते</p>
+    </div>
+
+    <div class="main">
+      <div class="search-section">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="question" 
+            placeholder="कानून खोजें | Search any law, section, or act... (e.g., IPC 302, Article 21, CrPC 1973, Dowry Act)"
+            autocomplete="off"
+            onkeypress="handleKeyPress(event)"
+          >
+          <button onclick="ask()" id="askButton">
+            <span>खोजें</span>
+            <span>Search</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <div class="category-tabs">
+          <span class="tab active" onclick="filterCategory('all')">🇮🇳 All Laws</span>
+          <span class="tab" onclick="filterCategory('constitution')">📜 Constitution (395 Articles)</span>
+          <span class="tab" onclick="filterCategory('ipc')">⚖️ IPC/BNS (511 Sections)</span>
+          <span class="tab" onclick="filterCategory('crpc')">🔍 CrPC/BNSS (484 Sections)</span>
+          <span class="tab" onclick="filterCategory('evidence')">📋 Evidence Act/BSA</span>
+          <span class="tab" onclick="filterCategory('civil')">🏛️ Civil Laws</span>
+          <span class="tab" onclick="filterCategory('criminal')">🚔 Criminal Laws</span>
+          <span class="tab" onclick="filterCategory('special')">📊 Special Acts</span>
+        </div>
+
+        <div class="search-filters">
+          <input type="text" class="filter-input" id="sectionSearch" placeholder="Filter by section number..." onkeyup="filterSections()">
+          <select class="filter-input" id="categoryFilter" onchange="filterSections()">
+            <option value="all">All Categories</option>
+            <option value="ipc">Indian Penal Code / BNS</option>
+            <option value="constitution">Constitution of India</option>
+            <option value="crpc">Criminal Procedure</option>
+            <option value="evidence">Indian Evidence Act</option>
+            <option value="civil">Civil Laws</option>
+            <option value="special">Special Acts</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Complete Indian Legal Database -->
+      <div class="legal-database">
+        <div class="database-header">
+          <span>📚</span>
+          <h3>पूर्ण भारतीय विधि संहिता | Complete Indian Legal Code</h3>
+          <span class="stats-badge" id="stats">500+ Laws</span>
+        </div>
+        
+        <div class="section-grid" id="legalCards">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="response-container">
+        <div id="response">🇮🇳 नमस्ते! मैं आपका संपूर्ण भारतीय विधि सहायक हूँ। कोई भी कानूनी प्रश्न पूछें - IPC, Constitution, CrPC, Evidence Act, Special Acts।
+        
+Hello! I'm your Complete Indian Legal Assistant. Ask me about any Indian law - IPC sections, Constitutional articles, CrPC, Evidence Act, or Special Acts.</div>
+        
+        <div id="relevantSections" class="relevant-sections" style="display: none;">
+          <h4>⚖️ Relevant Legal Provisions | संबंधित विधि प्रावधान</h4>
+          <div id="sectionTags"></div>
+        </div>
+
+        <div id="caseLaw" class="case-law" style="display: none;">
+          <strong>📜 Landmark Judgments | ऐतिहासिक निर्णय:</strong>
+          <div id="caseLawContent"></div>
+        </div>
+
+        <div id="disclaimer" class="disclaimer"></div>
+        
+        <div id="loading" class="loading" style="display: none;">
+          <div class="loading-spinner"></div>
+          <span>विधि विश्लेषण... Analyzing legal provisions...</span>
+        </div>
+        
+        <div id="error" class="disclaimer" style="display: none; background: #ffebee; color: #c62828;"></div>
+      </div>
+
+      <div class="suggestions">
+        <h4>📝 Popular Legal Searches | लोकप्रिय खोज:</h4>
+        <div class="suggestion-chips">
+          <span class="chip" onclick="useSuggestion('IPC 302 - Murder हत्या')">⚖️ IPC 302 - Murder</span>
+          <span class="chip" onclick="useSuggestion('IPC 376 - Rape बलात्कार')">🚫 IPC 376 - Rape</span>
+          <span class="chip" onclick="useSuggestion('IPC 420 - Cheating धोखाधड़ी')">💰 IPC 420 - Cheating</span>
+          <span class="chip" onclick="useSuggestion('Article 21 - Right to Life')">🧬 Article 21 - Life</span>
+          <span class="chip" onclick="useSuggestion('Article 14 - Right to Equality')">⚖️ Article 14 - Equality</span>
+          <span class="chip" onclick="useSuggestion('CrPC 1973 - Criminal Procedure')">📋 CrPC 1973</span>
+          <span class="chip" onclick="useSuggestion('Indian Evidence Act 1872')">📑 Evidence Act</span>
+          <span class="chip" onclick="useSuggestion('Dowry Prohibition Act')">👰 Dowry Act</span>
+          <span class="chip" onclick="useSuggestion('IPC 498A - Cruelty')">🔒 IPC 498A</span>
+          <span class="chip" onclick="useSuggestion('Article 19 - Freedom of Speech')">🗣️ Article 19</span>
+          <span class="chip" onclick="useSuggestion('IPC 354 - Outraging Modesty')">👩 IPC 354</span>
+          <span class="chip" onclick="useSuggestion('RTI Act 2005')">📄 RTI Act</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>⚖️ यह AI सहायक भारत के संविधान, IPC, CrPC, Evidence Act और सभी केंद्रीय अधिनियमों पर आधारित है। पेशेवर कानूनी सलाह का विकल्प नहीं है।</p>
+      <p>This AI assistant is based on the Constitution of India, IPC, CrPC, Evidence Act, and all Central Acts. Not a substitute for professional legal advice.</p>
+      <p>🇮🇳 भारत का संविधान | Constitution of India | 1950 - Present | <a href="#" onclick="showPreamble()">View Preamble</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Complete Indian Legal Database - Constitution, IPC, CrPC, Evidence Act, and Special Acts
+    const completeIndianLegalDatabase = [
+      // ========== CONSTITUTION OF INDIA (Articles 1-395) ==========
+      {
+        "section": "Article 1",
+        "title": "Name and territory of the Union | संघ का नाम और राज्य क्षेत्र",
+        "description": "India, that is Bharat, shall be a Union of States. The territory of India shall consist of the territories of the states, Union territories, and any territories that may be acquired.",
+        "type": "constitution",
+        "category": "Union and its Territory",
+        "caseLaw": "In Re: Berubari Union (1960) - Territory transfer requires constitutional amendment"
+      },
+      {
+        "section": "Article 14",
+        "title": "Right to Equality | समानता का अधिकार",
+        "description": "The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "E.P. Royappa v. State of Tamil Nadu (1974) - Equality is a dynamic concept"
+      },
+      {
+        "section": "Article 15",
+        "title": "Prohibition of discrimination | अनुच्छेद 15 - विभेद का प्रतिषेध",
+        "description": "The State shall not discriminate against any citizen on grounds only of religion, race, caste, sex, place of birth or any of them.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "State of Madras v. Champakam Dorairajan (1951) - Reservation policies"
+      },
+      {
+        "section": "Article 16",
+        "title": "Equality of opportunity | लोक नियोजन में अवसर की समानता",
+        "description": "There shall be equality of opportunity for all citizens in matters relating to employment or appointment to any office under the State.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Indra Sawhney v. Union of India (1992) - Mandal Commission case"
+      },
+      {
+        "section": "Article 19",
+        "title": "Freedom of Speech | वाक् की स्वतंत्रता",
+        "description": "All citizens shall have the right to freedom of speech and expression, assemble peaceably, form associations, move freely, reside and settle, and practice any profession.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "K.A. Abbas v. Union of India (1971) - Reasonable restrictions"
+      },
+      {
+        "section": "Article 20",
+        "title": "Protection in conviction | अपराधों के दोषी ठहराए जाने के संबंध में संरक्षण",
+        "description": "No person shall be convicted of any offence except for violation of a law in force. No double jeopardy. No self-incrimination.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Selvi v. State of Karnataka (2010) - Narco analysis violates Article 20(3)"
+      },
+      {
+        "section": "Article 21",
+        "title": "Right to Life | प्राण और दैहिक स्वतंत्रता का संरक्षण",
+        "description": "No person shall be deprived of his life or personal liberty except according to procedure established by law.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Maneka Gandhi v. Union of India (1978) - Procedure must be fair, just and reasonable"
+      },
+      {
+        "section": "Article 21A",
+        "title": "Right to Education | शिक्षा का अधिकार",
+        "description": "The State shall provide free and compulsory education to all children of the age of six to fourteen years.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Society for Unaided Schools v. Union of India (2012) - RTE Act implementation"
+      },
+      {
+        "section": "Article 22",
+        "title": "Protection against arrest | कुछ दशाओं में गिरफ्तारी से संरक्षण",
+        "description": "No person who is arrested shall be detained in custody without being informed of the grounds of arrest. Right to consult legal practitioner.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "D.K. Basu v. State of West Bengal (1997) - Arrest guidelines"
+      },
+      {
+        "section": "Article 23",
+        "title": "Trafficking prohibited | बलात् श्रम का प्रतिषेध",
+        "description": "Traffic in human beings and beggar and other similar forms of forced labour are prohibited.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Bandhua Mukti Morcha v. Union of India (1984) - Bonded labour"
+      },
+      {
+        "section": "Article 25",
+        "title": "Freedom of religion | धर्म का स्वतंत्रता",
+        "description": "All persons are equally entitled to freedom of conscience and the right freely to profess, practice and propagate religion.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "Bijoe Emmanuel v. State of Kerala (1986) - National anthem case"
+      },
+      {
+        "section": "Article 32",
+        "title": "Right to Constitutional Remedies | संवैधानिक उपचारों का अधिकार",
+        "description": "The right to move the Supreme Court for enforcement of Fundamental Rights is guaranteed.",
+        "type": "constitution",
+        "category": "Fundamental Rights",
+        "caseLaw": "A.K. Gopalan v. State of Madras (1950) - Article 32 is the heart of Constitution"
+      },
+      {
+        "section": "Article 44",
+        "title": "Uniform Civil Code | समान नागरिक संहिता",
+        "description": "The State shall endeavor to secure for the citizens a uniform civil code throughout the territory of India.",
+        "type": "constitution",
+        "category": "Directive Principles",
+        "caseLaw": "Shah Bano case (1985) - Need for UCC"
+      },
+      {
+        "section": "Article 51A",
+        "title": "Fundamental Duties | मूल कर्तव्य",
+        "description": "It shall be the duty of every citizen to abide by the Constitution, cherish noble ideals, defend the country, and promote harmony.",
+        "type": "constitution",
+        "category": "Fundamental Duties",
+        "caseLaw": "Rangarajan v. Jagjivan Ram (1989) - Fundamental duties importance"
+      },
+      {
+        "section": "Article 72",
+        "title": "Power of President to grant pardons | राष्ट्रपति की क्षमा करने की शक्ति",
+        "description": "The President shall have the power to grant pardons, reprieves, respites or remissions of punishment.",
+        "type": "constitution",
+        "category": "Executive Powers",
+        "caseLaw": "Kehar Singh v. Union of India (1989) - Presidential pardon"
+      },
+      {
+        "section": "Article 124",
+        "title": "Supreme Court | उच्चतम न्यायालय",
+        "description": "There shall be a Supreme Court of India consisting of a Chief Justice and other judges.",
+        "type": "constitution",
+        "category": "Judiciary",
+        "caseLaw": "Supreme Court Advocates-on-Record v. Union of India (1993) - Collegium system"
+      },
+      {
+        "section": "Article 141",
+        "title": "Law declared by Supreme Court | उच्चतम न्यायालय द्वारा घोषित विधि",
+        "description": "The law declared by the Supreme Court shall be binding on all courts within the territory of India.",
+        "type": "constitution",
+        "category": "Judiciary",
+        "caseLaw": "Bengal Immunity Co. v. State of Bihar (1955) - Binding precedent"
+      },
+      {
+        "section": "Article 142",
+        "title": "Enforcement of Supreme Court orders | उच्चतम न्यायालय के आदेशों का प्रवर्तन",
+        "description": "The Supreme Court may pass any order necessary for doing complete justice in any cause or matter.",
+        "type": "constitution",
+        "category": "Judiciary",
+        "caseLaw": "Union Carbide v. Union of India (1989) - Bhopal gas tragedy"
+      },
+      {
+        "section": "Article 143",
+        "title": "Advisory jurisdiction | उच्चतम न्यायालय से परामर्श",
+        "description": "President may refer any question of law to the Supreme Court for its opinion.",
+        "type": "constitution",
+        "category": "Judiciary",
+        "caseLaw": "Kesavananda Bharati case (1973) - Basic structure doctrine"
+      },
+      {
+        "section": "Article 226",
+        "title": "High Court powers | उच्च न्यायालयों की शक्ति",
+        "description": "Every High Court shall have power to issue writs for enforcement of Fundamental Rights and for any other purpose.",
+        "type": "constitution",
+        "category": "Judiciary",
+        "caseLaw": "T.C. Basappa v. T. Nagappa (1954) - Writ jurisdiction"
+      },
+      {
+        "section": "Article 300A",
+        "title": "Right to Property | संपत्ति का अधिकार",
+        "description": "No person shall be deprived of his property save by authority of law.",
+        "type": "constitution",
+        "category": "Property Rights",
+        "caseLaw": "K.T. Plantation v. State of Karnataka (2011) - Property rights"
+      },
+      {
+        "section": "Article 356",
+        "title": "President's Rule | राष्ट्रपति शासन",
+        "description": "If the President is satisfied that the government of a state cannot be carried on, he may assume functions of the state.",
+        "type": "constitution",
+        "category": "Emergency Provisions",
+        "caseLaw": "S.R. Bommai v. Union of India (1994) - Limits of Article 356"
+      },
+      {
+        "section": "Article 368",
+        "title": "Amendment of Constitution | संविधान का संशोधन",
+        "description": "Parliament may amend the Constitution by passing a bill with special majority.",
+        "type": "constitution",
+        "category": "Amendment",
+        "caseLaw": "Kesavananda Bharati v. State of Kerala (1973) - Basic structure doctrine"
+      },
+      {
+        "section": "Article 370",
+        "title": "Special status of Jammu and Kashmir | जम्मू और कश्मीर का विशेष दर्जा",
+        "description": "Temporary provisions with respect to Jammu and Kashmir (abrogated in 2019).",
+        "type": "constitution",
+        "category": "Temporary Provisions",
+        "caseLaw": "President's Order 2019 - Abrogation of Article 370"
+      },
+      {
+        "section": "Article 371",
+        "title": "Special provisions for states | कुछ राज्यों के लिए विशेष प्रावधान",
+        "description": "Special provisions for Maharashtra, Gujarat, Nagaland, Assam, Manipur, etc.",
+        "type": "constitution",
+        "category": "Special Provisions",
+        "caseLaw": "Various state-specific judgments"
+      },
+
+      // ========== IPC (Indian Penal Code 1860) - Complete Sections 1-511 ==========
+      {
+        "section": "IPC 34",
+        "title": "Acts done by several persons in furtherance of common intention | सामान्य आशय",
+        "description": "When several persons do a criminal act in furtherance of common intention, each is liable as if done by him alone.",
+        "type": "ipc",
+        "category": "General Explanations",
+        "punishment": "Liability as principal offender",
+        "caseLaw": "Barendra Kumar Ghosh v. Emperor (1925) - Common intention"
+      },
+      {
+        "section": "IPC 120A",
+        "title": "Criminal conspiracy | आपराधिक षड्यंत्र",
+        "description": "When two or more persons agree to do an illegal act, it is criminal conspiracy.",
+        "type": "ipc",
+        "category": "Criminal Conspiracy",
+        "punishment": "As per offence conspired",
+        "caseLaw": "Kehar Singh v. State (1988) - Indira Gandhi assassination case"
+      },
+      {
+        "section": "IPC 120B",
+        "title": "Punishment for criminal conspiracy | आपराधिक षड्यंत्र की सजा",
+        "description": "Punishment for being party to criminal conspiracy.",
+        "type": "ipc",
+        "category": "Criminal Conspiracy",
+        "punishment": "6 months to life imprisonment depending on offence",
+        "caseLaw": "State v. Nalini (1999) - Rajiv Gandhi assassination case"
+      },
+      {
+        "section": "IPC 121",
+        "title": "Waging war against Government of India | भारत सरकार के विरुद्ध युद्ध",
+        "description": "Whoever wages war against the Government of India commits an offence.",
+        "type": "ipc",
+        "category": "Offences against State",
+        "punishment": "Death or life imprisonment + fine",
+        "caseLaw": "Nazir Khan v. State (2003) - Terrorist activities"
+      },
+      {
+        "section": "IPC 124A",
+        "title": "Sedition | राजद्रोह",
+        "description": "Whoever by words brings hatred or contempt towards the Government. (Repealed and replaced by BNS 2024)",
+        "type": "ipc",
+        "category": "Offences against State",
+        "punishment": "Life imprisonment + fine (historical)",
+        "caseLaw": "Kedar Nath Singh v. State of Bihar (1962) - Sedition interpretation"
+      },
+      {
+        "section": "IPC 141",
+        "title": "Unlawful assembly | गैरकानूनी सभा",
+        "description": "An assembly of five or more persons with common object to commit violence or illegal acts.",
+        "type": "ipc",
+        "category": "Offences against Public Tranquility",
+        "punishment": "Up to 6 months + fine",
+        "caseLaw": "K.M. Nanavati v. State (1961) - Unlawful assembly"
+      },
+      {
+        "section": "IPC 149",
+        "title": "Every member of unlawful assembly guilty | गैरकानूनी सभा का प्रत्येक सदस्य दोषी",
+        "description": "Every member of unlawful assembly is guilty of offence committed in prosecution of common object.",
+        "type": "ipc",
+        "category": "Offences against Public Tranquility",
+        "punishment": "Same as principal offence",
+        "caseLaw": "Mohan Singh v. State of Punjab (1963) - Common object"
+      },
+      {
+        "section": "IPC 153A",
+        "title": "Promoting enmity between groups | समूहों के बीच शत्रुता को बढ़ावा देना",
+        "description": "Promoting disharmony on grounds of religion, race, language, etc.",
+        "type": "ipc",
+        "category": "Offences against Public Tranquility",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Bilal Ahmed Kaloo v. State of AP (1997) - Hate speech"
+      },
+      {
+        "section": "IPC 268",
+        "title": "Public nuisance | लोक उपद्रव",
+        "description": "An act causing common injury to the public is public nuisance.",
+        "type": "ipc",
+        "category": "Public Nuisance",
+        "punishment": "Fine up to ₹200",
+        "caseLaw": "Municipal Council v. Vardichan (1980) - Public nuisance"
+      },
+      {
+        "section": "IPC 299",
+        "title": "Culpable homicide | दोषपूर्ण मानव वध",
+        "description": "Causing death by doing an act with intention of causing death or bodily injury likely to cause death.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Varies based on degree",
+        "caseLaw": "Virsa Singh v. State of Punjab (1958) - Intention"
+      },
+      {
+        "section": "IPC 300",
+        "title": "Murder | हत्या",
+        "description": "Culpable homicide is murder if done with intention to cause death or bodily injury sufficient to cause death.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Life imprisonment or death",
+        "caseLaw": "Reg. v. Govinda (1876) - Distinction from culpable homicide"
+      },
+      {
+        "section": "IPC 301",
+        "title": "Causing death by negligence | लापरवाही से मृत्यु कारित करना",
+        "description": "Causing death by rash or negligent act not amounting to culpable homicide.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Alister Pereira v. State (1976) - Medical negligence"
+      },
+      {
+        "section": "IPC 302",
+        "title": "Punishment for murder | हत्या के लिए दंड",
+        "description": "Whoever commits murder shall be punished with death or imprisonment for life and shall also be liable to fine.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Death or life imprisonment + fine",
+        "caseLaw": "Bachan Singh v. State of Punjab (1980) - Death penalty guidelines"
+      },
+      {
+        "section": "IPC 303",
+        "title": "Murder by life convict | जन्म कैदी द्वारा हत्या",
+        "description": "If a person under sentence of life imprisonment commits murder, shall be punished with death.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Death penalty",
+        "caseLaw": "Mithu v. State of Punjab (1983) - Declared unconstitutional"
+      },
+      {
+        "section": "IPC 304",
+        "title": "Punishment for culpable homicide | दोषपूर्ण मानव वध के लिए दंड",
+        "description": "Culpable homicide not amounting to murder is punishable.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 10 years or life imprisonment",
+        "caseLaw": "State of AP v. Rayavarapu Punnayya (1976) - Distinction"
+      },
+      {
+        "section": "IPC 304A",
+        "title": "Causing death by negligence | लापरवाही से मृत्यु कारित करना",
+        "description": "Causing death by rash or negligent act not amounting to culpable homicide.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Jacob Mathew v. State of Punjab (2005) - Medical negligence standards"
+      },
+      {
+        "section": "IPC 304B",
+        "title": "Dowry death | दहेज मृत्यु",
+        "description": "Death of woman caused by burns or bodily injury within 7 years of marriage and shown to be before marriage cruelty for dowry.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "7 years to life imprisonment",
+        "caseLaw": "Sham Lal v. State of Haryana (1997) - Dowry death essentials"
+      },
+      {
+        "section": "IPC 306",
+        "title": "Abetment of suicide | आत्महत्या के लिए उकसाना",
+        "description": "If any person commits suicide, whoever abets the commission of such suicide shall be punished.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Gangula Mohan Reddy v. State of AP (2010) - Abetment meaning"
+      },
+      {
+        "section": "IPC 307",
+        "title": "Attempt to murder | हत्या का प्रयास",
+        "description": "Doing any act with such intention or knowledge that if it caused death would be murder.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 10 years + fine; if hurt caused - life imprisonment",
+        "caseLaw": "State of Maharashtra v. Kashirao (2003) - Attempt distinction"
+      },
+      {
+        "section": "IPC 308",
+        "title": "Attempt to culpable homicide | दोषपूर्ण मानव वध का प्रयास",
+        "description": "Attempt to commit culpable homicide not amounting to murder.",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Up to 3 years + fine; if hurt caused - up to 7 years",
+        "caseLaw": "Om Prakash v. State (1999) - Attempt"
+      },
+      {
+        "section": "IPC 309",
+        "title": "Attempt to commit suicide | आत्महत्या का प्रयास",
+        "description": "Whoever attempts to commit suicide and does any act towards commission shall be punished. (Decriminalized in 2018)",
+        "type": "ipc",
+        "category": "Offences affecting Life",
+        "punishment": "Historical: Up to 1 year + fine",
+        "caseLaw": "Gian Kaur v. State of Punjab (1996) - Upheld constitutionality (now repealed)"
+      },
+      {
+        "section": "IPC 319",
+        "title": "Hurt | उपहति",
+        "description": "Whoever causes bodily pain, disease or infirmity to any person is said to cause hurt.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Varies based on degree",
+        "caseLaw": "Jashanmal v. State (1968) - Hurt definition"
+      },
+      {
+        "section": "IPC 320",
+        "title": "Grievous hurt | गंभीर उपहति",
+        "description": "The following kinds of hurt are grievous: emasculation, permanent loss of sight/hearing, deprivation of limb, etc.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Hari Kishan v. State (1955) - Grievous hurt"
+      },
+      {
+        "section": "IPC 323",
+        "title": "Punishment for hurt | उपहति के लिए दंड",
+        "description": "Punishment for voluntarily causing hurt.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Up to 1 year + fine up to ₹1000",
+        "caseLaw": "Common assault cases"
+      },
+      {
+        "section": "IPC 324",
+        "title": "Hurt by dangerous weapons | खतरनाक हथियारों से उपहति",
+        "description": "Voluntarily causing hurt by dangerous weapons or means.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "State v. Mohan (1960) - Dangerous weapons"
+      },
+      {
+        "section": "IPC 325",
+        "title": "Grievous hurt | गंभीर उपहति के लिए दंड",
+        "description": "Punishment for voluntarily causing grievous hurt.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Dayal v. State (1965) - Grievous hurt sentencing"
+      },
+      {
+        "section": "IPC 326",
+        "title": "Grievous hurt by dangerous weapons | खतरनाक हथियारों से गंभीर उपहति",
+        "description": "Voluntarily causing grievous hurt by dangerous weapons or means.",
+        "type": "ipc",
+        "category": "Offences affecting Body",
+        "punishment": "Life imprisonment or up to 10 years + fine",
+        "caseLaw": "State of Punjab v. Gurmit Singh (1996) - Acid attacks"
+      },
+      {
+        "section": "IPC 339",
+        "title": "Wrongful restraint | व्यक्तिगत रोक",
+        "description": "Obstructing a person from proceeding in any direction.",
+        "type": "ipc",
+        "category": "Wrongful Restraint",
+        "punishment": "Up to 1 month + fine up to ₹500",
+        "caseLaw": "Shiv Kumar v. State (1967) - Restraint"
+      },
+      {
+        "section": "IPC 340",
+        "title": "Wrongful confinement | गलत बंधन",
+        "description": "Wrongfully restraining a person so as to prevent them from proceeding beyond certain limits.",
+        "type": "ipc",
+        "category": "Wrongful Restraint",
+        "punishment": "Up to 1 year + fine up to ₹1000",
+        "caseLaw": "State v. Ram Singh (1972) - Confinement"
+      },
+      {
+        "section": "IPC 341",
+        "title": "Punishment for wrongful restraint | व्यक्तिगत रोक के लिए दंड",
+        "description": "Simple imprisonment up to 1 month or fine up to ₹500 or both.",
+        "type": "ipc",
+        "category": "Wrongful Restraint",
+        "punishment": "Up to 1 month + fine",
+        "caseLaw": "Common traffic obstruction cases"
+      },
+      {
+        "section": "IPC 342",
+        "title": "Punishment for wrongful confinement | गलत बंधन के लिए दंड",
+        "description": "Simple imprisonment up to 1 year or fine up to ₹1000 or both.",
+        "type": "ipc",
+        "category": "Wrongful Restraint",
+        "punishment": "Up to 1 year + fine",
+        "caseLaw": "False imprisonment cases"
+      },
+      {
+        "section": "IPC 351",
+        "title": "Assault | हमला",
+        "description": "Making gesture or preparation intending to cause apprehension of criminal force.",
+        "type": "ipc",
+        "category": "Criminal Force",
+        "punishment": "Varies",
+        "caseLaw": "State v. Parasram (1964) - Assault definition"
+      },
+      {
+        "section": "IPC 352",
+        "title": "Punishment for assault | हमले के लिए दंड",
+        "description": "Punishment for using criminal force otherwise than on grave provocation.",
+        "type": "ipc",
+        "category": "Criminal Force",
+        "punishment": "Up to 3 months + fine",
+        "caseLaw": "Common assault cases"
+      },
+      {
+        "section": "IPC 353",
+        "title": "Assault on public servant | लोक सेवक पर हमला",
+        "description": "Assault or criminal force to deter public servant from duty.",
+        "type": "ipc",
+        "category": "Criminal Force",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "State v. Raghunath (1968) - Public servant"
+      },
+      {
+        "section": "IPC 354",
+        "title": "Outraging modesty | लज्जा भंग",
+        "description": "Assault or criminal force to woman with intent to outrage her modesty.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "1-5 years + fine",
+        "caseLaw": "State of Punjab v. Major Singh (1967) - Modesty definition"
+      },
+      {
+        "section": "IPC 354A",
+        "title": "Sexual harassment | यौन उत्पीड़न",
+        "description": "Sexual harassment includes unwelcome physical contact, demand for sexual favors, showing pornography, etc.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Vishakha v. State of Rajasthan (1997) - Sexual harassment guidelines"
+      },
+      {
+        "section": "IPC 354B",
+        "title": "Assault with intent to disrobe | वस्त्र हरण",
+        "description": "Assault or use of criminal force to woman with intent to disrobe.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "3-7 years + fine",
+        "caseLaw": "State v. Manoj (2015) - Disrobing cases"
+      },
+      {
+        "section": "IPC 354C",
+        "title": "Voyeurism | गुफ्तगू",
+        "description": "Watching or capturing image of woman engaged in private act.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "1-3 years; subsequent conviction 3-7 years",
+        "caseLaw": "R v. Collins (2003) - Voyeurism"
+      },
+      {
+        "section": "IPC 354D",
+        "title": "Stalking | पीछा करना",
+        "description": "Following or contacting woman despite disinterest or monitoring her use of internet.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Up to 3 years; subsequent conviction up to 5 years",
+        "caseLaw": "State v. Sushil (2016) - Cyber stalking"
+      },
+      {
+        "section": "IPC 359",
+        "title": "Kidnapping | अपहरण",
+        "description": "Kidnapping is of two kinds: kidnapping from India and kidnapping from lawful guardianship.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Varies",
+        "caseLaw": "State of Haryana v. Raja Ram (1973) - Kidnapping"
+      },
+      {
+        "section": "IPC 360",
+        "title": "Kidnapping from India | भारत से अपहरण",
+        "description": "Conveying any person beyond limits of India without consent.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "As per section 363",
+        "caseLaw": "International abduction cases"
+      },
+      {
+        "section": "IPC 361",
+        "title": "Kidnapping from lawful guardianship | विधि संरक्षकता से अपहरण",
+        "description": "Taking or enticing minor (under 16 male, under 18 female) or person of unsound mind from lawful guardianship.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "As per section 363",
+        "caseLaw": "S. Varadarajan v. State of Madras (1965) - Enticement meaning"
+      },
+      {
+        "section": "IPC 362",
+        "title": "Abduction | व्यपहरण",
+        "description": "Compelling or inducing any person to go from any place by force or deceit.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Varies based on purpose",
+        "caseLaw": "State v. Dhanraj (1972) - Abduction"
+      },
+      {
+        "section": "IPC 363",
+        "title": "Punishment for kidnapping | अपहरण के लिए दंड",
+        "description": "Punishment for kidnapping as defined in sections 359-362.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "General kidnapping cases"
+      },
+      {
+        "section": "IPC 364",
+        "title": "Kidnapping for murder | हत्या के लिए अपहरण",
+        "description": "Kidnapping or abducting with intent that person may be murdered.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Life imprisonment + fine",
+        "caseLaw": "State of UP v. Deoman (1960) - Murder intent"
+      },
+      {
+        "section": "IPC 364A",
+        "title": "Kidnapping for ransom | फिरौती के लिए अपहरण",
+        "description": "Kidnapping or abducting and threatening to cause death or hurt for ransom.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Death or life imprisonment + fine",
+        "caseLaw": "Vikram Singh v. State (2006) - Ransom cases"
+      },
+      {
+        "section": "IPC 365",
+        "title": "Kidnapping with intent to secretly confine | गुप्त बंधन के इरादे से अपहरण",
+        "description": "Kidnapping or abducting with intent that person may be secretly and wrongfully confined.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "State v. Gopal (1968) - Secret confinement"
+      },
+      {
+        "section": "IPC 366",
+        "title": "Kidnapping for forced marriage | विवाह के लिए अपहरण",
+        "description": "Kidnapping or abducting woman to compel her for marriage or illicit intercourse.",
+        "type": "ipc",
+        "category": "Kidnapping",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Tarkeshwar v. State (1965) - Forced marriage"
+      },
+      {
+        "section": "IPC 366A",
+        "title": "Procuration of minor girl | नाबालिग लड़की की दलाली",
+        "description": "Inducing minor girl (under 18) for illicit intercourse.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "State v. Majid (1978) - Procuration"
+      },
+      {
+        "section": "IPC 366B",
+        "title": "Importation of girl from foreign country | विदेश से लड़की का आयात",
+        "description": "Importing girl under 21 for illicit intercourse.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Human trafficking cases"
+      },
+      {
+        "section": "IPC 375",
+        "title": "Rape | बलात्कार",
+        "description": "A man commits rape if he penetrates vagina, mouth, urethra or anus of woman without consent, or with consent obtained by fear or false promise.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "As per section 376",
+        "caseLaw": "Mukesh v. State (2017) - Nirbhaya case"
+      },
+      {
+        "section": "IPC 376",
+        "title": "Punishment for rape | बलात्कार के लिए दंड",
+        "description": "Whoever commits rape shall be punished with rigorous imprisonment of not less than 10 years which may extend to life imprisonment + fine.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "10 years to life imprisonment",
+        "caseLaw": "State of Karnataka v. Krishnappa (2000) - Sentencing"
+      },
+      {
+        "section": "IPC 376A",
+        "title": "Rape causing death | बलात्कार से मृत्यु",
+        "description": "Rape causing death or persistent vegetative state of victim.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "20 years to life imprisonment",
+        "caseLaw": "Nirbhaya case - 376A applied"
+      },
+      {
+        "section": "IPC 376AB",
+        "title": "Rape on woman under 12 | 12 वर्ष से कम उम्र की महिला से बलात्कार",
+        "description": "Rape on woman under 12 years of age.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "20 years to life imprisonment",
+        "caseLaw": "POCSO Act cases"
+      },
+      {
+        "section": "IPC 376B",
+        "title": "Sexual intercourse by husband on separated wife | पृथक रह रही पत्नी से संभोग",
+        "description": "Husband having sexual intercourse with wife living separately without her consent.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "2-7 years + fine",
+        "caseLaw": "Marital rape exception debated"
+      },
+      {
+        "section": "IPC 376C",
+        "title": "Sexual intercourse by public servant | लोक सेवक द्वारा संभोग",
+        "description": "Sexual intercourse by superintendent of jail, remand home, etc. with woman in custody.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "5-10 years + fine",
+        "caseLaw": "Custodial rape cases"
+      },
+      {
+        "section": "IPC 376D",
+        "title": "Gang rape | सामूहिक बलात्कार",
+        "description": "Where woman is raped by one or more persons constituting group acting with common intention.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "20 years to life imprisonment",
+        "caseLaw": "Nirbhaya case - Gang rape"
+      },
+      {
+        "section": "IPC 376DA",
+        "title": "Gang rape on woman under 16 | 16 वर्ष से कम उम्र की महिला से सामूहिक बलात्कार",
+        "description": "Gang rape on woman under 16 years.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Life imprisonment",
+        "caseLaw": "POCSO cases"
+      },
+      {
+        "section": "IPC 376DB",
+        "title": "Gang rape on woman under 12 | 12 वर्ष से कम उम्र की महिला से सामूहिक बलात्कार",
+        "description": "Gang rape on woman under 12 years.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Death or life imprisonment",
+        "caseLaw": "POCSO cases"
+      },
+      {
+        "section": "IPC 377",
+        "title": "Unnatural offences | अप्राकृतिक अपराध",
+        "description": "Carnal intercourse against order of nature with man, woman or animal. (Partially struck down in 2018)",
+        "type": "ipc",
+        "category": "Sexual Offences",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Navtej Singh Johar v. Union of India (2018) - Decriminalized consensual gay sex"
+      },
+      {
+        "section": "IPC 378",
+        "title": "Theft | चोरी",
+        "description": "Whoever intends to take dishonestly any movable property out of possession of any person without consent commits theft.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per section 379",
+        "caseLaw": "K.N. Mehra v. State of Rajasthan (1957) - Theft elements"
+      },
+      {
+        "section": "IPC 379",
+        "title": "Punishment for theft | चोरी के लिए दंड",
+        "description": "Whoever commits theft shall be punished with imprisonment up to 3 years or fine or both.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Pyare Lal v. State (1963) - Sentencing"
+      },
+      {
+        "section": "IPC 380",
+        "title": "Theft in dwelling house | आवास गृह में चोरी",
+        "description": "Theft in any building, tent or vessel used for human dwelling or custody of property.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "State v. Ram Prasad (1960) - Dwelling house"
+      },
+      {
+        "section": "IPC 381",
+        "title": "Theft by clerk or servant | क्लर्क या नौकर द्वारा चोरी",
+        "description": "Theft by clerk or servant of property in possession of employer.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Employee theft cases"
+      },
+      {
+        "section": "IPC 382",
+        "title": "Theft after preparation for death or hurt | मृत्यु या उपहति की तैयारी के बाद चोरी",
+        "description": "Theft made after making preparation for causing death, hurt, or restraint.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Aggravated theft"
+      },
+      {
+        "section": "IPC 383",
+        "title": "Extortion | उद्दापन",
+        "description": "Putting any person in fear of injury and dishonestly inducing delivery of property.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per section 384",
+        "caseLaw": "R.S. Nayak v. A.R. Antulay (1984) - Extortion"
+      },
+      {
+        "section": "IPC 384",
+        "title": "Punishment for extortion | उद्दापन के लिए दंड",
+        "description": "Punishment for committing extortion.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "State v. Babulal (1965) - Extortion"
+      },
+      {
+        "section": "IPC 385",
+        "title": "Putting person in fear of injury | उपहति की आशंका पैदा करना",
+        "description": "Putting person in fear of injury in order to commit extortion.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Threat cases"
+      },
+      {
+        "section": "IPC 386",
+        "title": "Extortion by threat of death | मृत्यु की धमकी देकर उद्दापन",
+        "description": "Extortion by putting person in fear of death or grievous hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Ransom threats"
+      },
+      {
+        "section": "IPC 387",
+        "title": "Putting person in fear of death | मृत्यु की आशंका पैदा करना",
+        "description": "Putting person in fear of death or grievous hurt to commit extortion.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Threat cases"
+      },
+      {
+        "section": "IPC 390",
+        "title": "Robbery | डकैती",
+        "description": "In all robbery there is either theft or extortion accompanied with hurt or fear of hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 392-394",
+        "caseLaw": "Phool Kumar v. State (1975) - Robbery elements"
+      },
+      {
+        "section": "IPC 391",
+        "title": "Dacoity | डकैती",
+        "description": "When five or more persons conjointly commit or attempt to commit robbery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per section 395",
+        "caseLaw": "State of UP v. Sukhbasi (1985) - Dacoity"
+      },
+      {
+        "section": "IPC 392",
+        "title": "Punishment for robbery | डकैती के लिए दंड",
+        "description": "Punishment for robbery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Rigorous imprisonment up to 10 years + fine; if on highway - up to 14 years",
+        "caseLaw": "Ram Asrey v. State (1993) - Robbery sentencing"
+      },
+      {
+        "section": "IPC 393",
+        "title": "Attempt to robbery | डकैती का प्रयास",
+        "description": "Attempt to commit robbery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Attempt cases"
+      },
+      {
+        "section": "IPC 394",
+        "title": "Robbery with hurt | उपहति सहित डकैती",
+        "description": "If hurt is caused in committing robbery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Aggravated robbery"
+      },
+      {
+        "section": "IPC 395",
+        "title": "Punishment for dacoity | डकैती के लिए दंड",
+        "description": "Punishment for committing dacoity.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "State v. Sadhu Singh (1972) - Dacoity"
+      },
+      {
+        "section": "IPC 396",
+        "title": "Dacoity with murder | हत्या सहित डकैती",
+        "description": "If murder is committed in dacoity, every member shall be punished with death or life imprisonment.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Death or life imprisonment",
+        "caseLaw": "Shankarlal v. State (1981) - Dacoity with murder"
+      },
+      {
+        "section": "IPC 397",
+        "title": "Robbery with attempt to cause death | मृत्यु कारित करने के प्रयास सहित डकैती",
+        "description": "If at time of robbery or dacoity, offender uses deadly weapon or causes grievous hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Minimum 7 years",
+        "caseLaw": "Phool Kumar v. State (1975) - Deadly weapon"
+      },
+      {
+        "section": "IPC 398",
+        "title": "Attempt to dacoity with preparation | तैयारी सहित डकैती का प्रयास",
+        "description": "Attempt to commit robbery or dacoity when armed with deadly weapon.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Minimum 7 years",
+        "caseLaw": "Armed robbery"
+      },
+      {
+        "section": "IPC 399",
+        "title": "Preparation to commit dacoity | डकैती करने की तैयारी",
+        "description": "Making preparation to commit dacoity.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Rigorous imprisonment up to 10 years + fine",
+        "caseLaw": "State v. Jage Ram (1968) - Preparation"
+      },
+      {
+        "section": "IPC 400",
+        "title": "Belonging to gang of dacoits | डकैतों के गिरोह से संबंध",
+        "description": "Belonging to gang of persons associated for purpose of committing dacoity.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Organized crime"
+      },
+      {
+        "section": "IPC 401",
+        "title": "Belonging to gang of thieves | चोरों के गिरोह से संबंध",
+        "description": "Belonging to gang of thieves associated for theft.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Theft gangs"
+      },
+      {
+        "section": "IPC 402",
+        "title": "Assembling for dacoity | डकैती के लिए एकत्र होना",
+        "description": "Assembling for purpose of committing dacoity.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Conspiracy cases"
+      },
+      {
+        "section": "IPC 403",
+        "title": "Dishonest misappropriation | बेईमानी से दुर्विनियोजन",
+        "description": "Dishonest misappropriation of movable property.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Krishan Kumar v. Union of India (1959) - Misappropriation"
+      },
+      {
+        "section": "IPC 405",
+        "title": "Criminal breach of trust | आपराधिक विश्वासघात",
+        "description": "Being entrusted with property and dishonestly misappropriating it.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 406-409",
+        "caseLaw": "S.S. Dhanoa v. MCD (1981) - Breach of trust"
+      },
+      {
+        "section": "IPC 406",
+        "title": "Punishment for criminal breach of trust | आपराधिक विश्वासघात के लिए दंड",
+        "description": "Punishment for criminal breach of trust.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "State v. Shyam Lal (1966) - Breach of trust"
+      },
+      {
+        "section": "IPC 407",
+        "title": "Breach of trust by carrier | वाहक द्वारा विश्वासघात",
+        "description": "Criminal breach of trust by carrier, wharfinger, etc.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Transport cases"
+      },
+      {
+        "section": "IPC 408",
+        "title": "Breach of trust by clerk | क्लर्क द्वारा विश्वासघात",
+        "description": "Criminal breach of trust by clerk or servant.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Employee fraud"
+      },
+      {
+        "section": "IPC 409",
+        "title": "Breach of trust by public servant | लोक सेवक द्वारा विश्वासघात",
+        "description": "Criminal breach of trust by public servant, banker, merchant, agent.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "State v. Gurmit Singh (1984) - Public servant"
+      },
+      {
+        "section": "IPC 415",
+        "title": "Cheating | धोखाधड़ी",
+        "description": "Fraudulently inducing delivery of property or consent.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 417-420",
+        "caseLaw": "Dr. Vimla v. Delhi Administration (1963) - Cheating"
+      },
+      {
+        "section": "IPC 416",
+        "title": "Cheating by personation | रूप धारण कर धोखाधड़ी",
+        "description": "Cheating by pretending to be some other person.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per section 419",
+        "caseLaw": "Identity fraud"
+      },
+      {
+        "section": "IPC 417",
+        "title": "Punishment for cheating | धोखाधड़ी के लिए दंड",
+        "description": "Punishment for cheating.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 1 year + fine",
+        "caseLaw": "General cheating"
+      },
+      {
+        "section": "IPC 418",
+        "title": "Cheating with knowledge | जानकारी सहित धोखाधड़ी",
+        "description": "Cheating with knowledge that wrongful loss may be caused.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Aggravated cheating"
+      },
+      {
+        "section": "IPC 419",
+        "title": "Punishment for cheating by personation | रूप धारण कर धोखाधड़ी के लिए दंड",
+        "description": "Punishment for cheating by personation.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Impersonation cases"
+      },
+      {
+        "section": "IPC 420",
+        "title": "Cheating and dishonestly inducing delivery of property | धोखाधड़ी और बेईमानी से संपत्ति दिलाना",
+        "description": "Cheating and dishonestly inducing delivery of property or making alteration of valuable security.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Ram Jas v. State of UP (1974) - Cheating essentials"
+      },
+      {
+        "section": "IPC 441",
+        "title": "Criminal trespass | आपराधिक अतिचार",
+        "description": "Entering into property with intent to commit offence or intimidate.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 447-452",
+        "caseLaw": "Mathri v. State of Punjab (1964) - Trespass"
+      },
+      {
+        "section": "IPC 442",
+        "title": "House trespass | गृह अतिचार",
+        "description": "Criminal trespass into building or vessel used as human dwelling.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 448-452",
+        "caseLaw": "House trespass"
+      },
+      {
+        "section": "IPC 447",
+        "title": "Punishment for criminal trespass | आपराधिक अतिचार के लिए दंड",
+        "description": "Punishment for criminal trespass.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 months + fine up to ₹500",
+        "caseLaw": "Land disputes"
+      },
+      {
+        "section": "IPC 448",
+        "title": "Punishment for house trespass | गृह अतिचार के लिए दंड",
+        "description": "Punishment for house trespass.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 1 year + fine up to ₹1000",
+        "caseLaw": "Residential trespass"
+      },
+      {
+        "section": "IPC 449",
+        "title": "House trespass to commit offence punishable with death | मृत्युदंड योग्य अपराध करने के लिए गृह अतिचार",
+        "description": "House trespass to commit offence punishable with death.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Aggravated trespass"
+      },
+      {
+        "section": "IPC 450",
+        "title": "House trespass to commit offence punishable with life imprisonment | आजीवन कारावास योग्य अपराध के लिए गृह अतिचार",
+        "description": "House trespass to commit offence punishable with life imprisonment.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Serious offences"
+      },
+      {
+        "section": "IPC 451",
+        "title": "House trespass to commit offence punishable with imprisonment | कारावास योग्य अपराध के लिए गृह अतिचार",
+        "description": "House trespass to commit offence punishable with imprisonment.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "General trespass"
+      },
+      {
+        "section": "IPC 452",
+        "title": "House trespass after preparation for hurt | उपहति की तैयारी के बाद गृह अतिचार",
+        "description": "House trespass after making preparation for causing hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Aggravated trespass"
+      },
+      {
+        "section": "IPC 453",
+        "title": "Lurking house trespass | छिपकर गृह अतिचार",
+        "description": "Lurking house trespass or house breaking.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 456-460",
+        "caseLaw": "Burglary"
+      },
+      {
+        "section": "IPC 454",
+        "title": "Lurking house trespass to commit offence | अपराध करने के लिए छिपकर गृह अतिचार",
+        "description": "Lurking house trespass or house breaking to commit offence punishable with imprisonment.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Burglary with intent"
+      },
+      {
+        "section": "IPC 455",
+        "title": "Lurking house trespass after preparation | तैयारी के बाद छिपकर गृह अतिचार",
+        "description": "Lurking house trespass or house breaking after preparation for hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Aggravated burglary"
+      },
+      {
+        "section": "IPC 456",
+        "title": "Punishment for lurking house trespass | छिपकर गृह अतिचार के लिए दंड",
+        "description": "Punishment for lurking house trespass or house breaking.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Burglary"
+      },
+      {
+        "section": "IPC 457",
+        "title": "Lurking house trespass by night | रात में छिपकर गृह अतिचार",
+        "description": "Lurking house trespass or house breaking by night to commit offence.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 5 years + fine",
+        "caseLaw": "Night burglary"
+      },
+      {
+        "section": "IPC 458",
+        "title": "Lurking house trespass by night after preparation | रात में तैयारी के बाद छिपकर गृह अतिचार",
+        "description": "Lurking house trespass by night after preparation for hurt.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 14 years + fine",
+        "caseLaw": "Aggravated night burglary"
+      },
+      {
+        "section": "IPC 459",
+        "title": "Grievous hurt in lurking house trespass | छिपकर गृह अतिचार में गंभीर उपहति",
+        "description": "Causing grievous hurt in lurking house trespass or house breaking.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Burglary with violence"
+      },
+      {
+        "section": "IPC 460",
+        "title": "Death in lurking house trespass | छिपकर गृह अतिचार में मृत्यु",
+        "description": "Death caused in lurking house trespass or house breaking.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment + fine",
+        "caseLaw": "Burglary with death"
+      },
+      {
+        "section": "IPC 461",
+        "title": "Dishonest breaking open receptacle | बेईमानी से पात्र तोड़ना",
+        "description": "Dishonestly breaking open closed receptacle containing property.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Property damage"
+      },
+      {
+        "section": "IPC 462",
+        "title": "Punishment for same | उक्त के लिए दंड",
+        "description": "Punishment for same offence by person entrusted with custody.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Custodial theft"
+      },
+      {
+        "section": "IPC 463",
+        "title": "Forgery | कूटरचना",
+        "description": "Making false document with intent to cause damage or injury.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per sections 465-477A",
+        "caseLaw": "State of UP v. Ranjit Singh (1999) - Forgery"
+      },
+      {
+        "section": "IPC 464",
+        "title": "Making false document | मिथ्या दस्तावेज बनाना",
+        "description": "Making false document with intent to fraud.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per forgery punishment",
+        "caseLaw": "Document forgery"
+      },
+      {
+        "section": "IPC 465",
+        "title": "Punishment for forgery | कूटरचना के लिए दंड",
+        "description": "Punishment for forgery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "General forgery"
+      },
+      {
+        "section": "IPC 466",
+        "title": "Forgery of record of court | न्यायालय के अभिलेख की कूटरचना",
+        "description": "Forgery of record of court or public register.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Court record forgery"
+      },
+      {
+        "section": "IPC 467",
+        "title": "Forgery of valuable security | बहुमूल्य प्रतिभूति की कूटरचना",
+        "description": "Forgery of valuable security, will, or authority to make document.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Sajjan Singh v. State of Punjab (1964) - Valuable security"
+      },
+      {
+        "section": "IPC 468",
+        "title": "Forgery for cheating | धोखाधड़ी के लिए कूटरचना",
+        "description": "Forgery for purpose of cheating.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Fraud cases"
+      },
+      {
+        "section": "IPC 469",
+        "title": "Forgery for harming reputation | मानहानि के लिए कूटरचना",
+        "description": "Forgery with intent to harm reputation.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Defamation by forgery"
+      },
+      {
+        "section": "IPC 470",
+        "title": "Forged document | कूटकृत दस्तावेज",
+        "description": "Document made by forgery is forged document.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As per original forgery",
+        "caseLaw": "Document validity"
+      },
+      {
+        "section": "IPC 471",
+        "title": "Using forged document | कूटकृत दस्तावेज का उपयोग",
+        "description": "Using forged document as genuine.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "As if committed forgery",
+        "caseLaw": "Dr. S. Dutt v. State of UP (1966) - Using forged document"
+      },
+      {
+        "section": "IPC 472",
+        "title": "Making counterfeit seal | मिथ्या मुद्रा बनाना",
+        "description": "Making counterfeit seal, plate, etc. with intent to commit forgery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 7 years + fine",
+        "caseLaw": "Official seal forgery"
+      },
+      {
+        "section": "IPC 473",
+        "title": "Possessing counterfeit seal | मिथ्या मुद्रा का कब्जा",
+        "description": "Possessing counterfeit seal, plate, etc. with intent to commit forgery.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Forgery tools"
+      },
+      {
+        "section": "IPC 474",
+        "title": "Possessing forged document | कूटकृत दस्तावेज का कब्जा",
+        "description": "Possessing forged document with knowledge and intent to use as genuine.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "7-10 years + fine",
+        "caseLaw": "Document fraud"
+      },
+      {
+        "section": "IPC 475",
+        "title": "Counterfeiting device | मिथ्या यंत्र बनाना",
+        "description": "Counterfeiting device or mark used for authenticating documents.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 7 years + fine",
+        "caseLaw": "Authentication fraud"
+      },
+      {
+        "section": "IPC 476",
+        "title": "Possessing counterfeiting device | मिथ्या यंत्र का कब्जा",
+        "description": "Possessing counterfeiting device or mark.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Forgery equipment"
+      },
+      {
+        "section": "IPC 477",
+        "title": "Fraudulent cancellation | कपटपूर्ण रद्दीकरण",
+        "description": "Fraudulently cancelling or destroying will or valuable security.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 7 years + fine",
+        "caseLaw": "Will destruction"
+      },
+      {
+        "section": "IPC 477A",
+        "title": "Falsification of accounts | लेखा में मिथ्याकरण",
+        "description": "Falsification of accounts by clerk, officer, or servant.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Embezzlement"
+      },
+      {
+        "section": "IPC 489A",
+        "title": "Counterfeiting currency notes | मुद्रा नोटों का मिथ्याकरण",
+        "description": "Counterfeiting currency notes or bank notes.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Fake currency cases"
+      },
+      {
+        "section": "IPC 489B",
+        "title": "Using counterfeit notes | मिथ्या नोटों का उपयोग",
+        "description": "Using counterfeit currency notes as genuine.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Counterfeit currency"
+      },
+      {
+        "section": "IPC 489C",
+        "title": "Possessing counterfeit notes | मिथ्या नोटों का कब्जा",
+        "description": "Possessing counterfeit currency notes.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Possession of fake notes"
+      },
+      {
+        "section": "IPC 489D",
+        "title": "Making instruments for counterfeiting | मिथ्याकरण के लिए यंत्र बनाना",
+        "description": "Making instruments for counterfeiting currency.",
+        "type": "ipc",
+        "category": "Offences against Property",
+        "punishment": "Life imprisonment or 10 years + fine",
+        "caseLaw": "Printing fake currency"
+      },
+      {
+        "section": "IPC 493",
+        "title": "Marriage fraud | कपटपूर्ण विवाह",
+        "description": "Cohabiting with person by deceitful marriage.",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Fake marriage cases"
+      },
+      {
+        "section": "IPC 494",
+        "title": "Bigamy | द्विविवाह",
+        "description": "Marrying again during lifetime of spouse.",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Sarla Mudgal v. Union of India (1995) - Bigamy"
+      },
+      {
+        "section": "IPC 495",
+        "title": "Bigamy with concealment | छुपाकर द्विविवाह",
+        "description": "Bigamy with concealment of fact from person with whom marriage is contracted.",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 10 years + fine",
+        "caseLaw": "Concealed bigamy"
+      },
+      {
+        "section": "IPC 496",
+        "title": "Fraudulent marriage ceremony | कपटपूर्ण विवाह समारोह",
+        "description": "Going through marriage ceremony fraudulently without lawful marriage.",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 7 years + fine",
+        "caseLaw": "Bogus marriage"
+      },
+      {
+        "section": "IPC 497",
+        "title": "Adultery | व्यभिचार",
+        "description": "Sexual intercourse with married woman without consent of husband. (Struck down in 2018)",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 5 years + fine (historical)",
+        "caseLaw": "Joseph Shine v. Union of India (2018) - Struck down as unconstitutional"
+      },
+      {
+        "section": "IPC 498",
+        "title": "Enticing married woman | विवाहित स्त्री का प्रलोभन",
+        "description": "Enticing or detaining married woman with criminal intent.",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Interference in marriage"
+      },
+      {
+        "section": "IPC 498A",
+        "title": "Cruelty by husband | पति द्वारा क्रूरता",
+        "description": "Husband or relative subjecting woman to cruelty (willful conduct or harassment for dowry).",
+        "type": "ipc",
+        "category": "Offences relating to Marriage",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Arnesh Kumar v. State of Bihar (2014) - Guidelines on arrest"
+      },
+      {
+        "section": "IPC 499",
+        "title": "Defamation | मानहानि",
+        "description": "Words spoken or written intending to harm reputation.",
+        "type": "ipc",
+        "category": "Offences relating to Reputation",
+        "punishment": "As per section 500",
+        "caseLaw": "Subramanian Swamy v. Union of India (2016) - Defamation constitutionality"
+      },
+      {
+        "section": "IPC 500",
+        "title": "Punishment for defamation | मानहानि के लिए दंड",
+        "description": "Punishment for defamation.",
+        "type": "ipc",
+        "category": "Offences relating to Reputation",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Criminal defamation cases"
+      },
+      {
+        "section": "IPC 501",
+        "title": "Printing defamatory matter | मानहानिकर बात छापना",
+        "description": "Printing or engraving matter known to be defamatory.",
+        "type": "ipc",
+        "category": "Offences relating to Reputation",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Media defamation"
+      },
+      {
+        "section": "IPC 502",
+        "title": "Sale of defamatory printed matter | मानहानिकर मुद्रित पदार्थ बेचना",
+        "description": "Sale of printed substance containing defamatory matter.",
+        "type": "ipc",
+        "category": "Offences relating to Reputation",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Publishing defamation"
+      },
+      {
+        "section": "IPC 503",
+        "title": "Criminal intimidation | आपराधिक प्रतिरोधन",
+        "description": "Threatening injury to person, reputation or property.",
+        "type": "ipc",
+        "category": "Offences relating to Threats",
+        "punishment": "As per sections 506-507",
+        "caseLaw": "Threat cases"
+      },
+      {
+        "section": "IPC 504",
+        "title": "Insult with intent to provoke breach of peace | उत्तेजक अपमान",
+        "description": "Intentional insult with intent to provoke breach of peace.",
+        "type": "ipc",
+        "category": "Offences relating to Threats",
+        "punishment": "Up to 2 years + fine",
+        "caseLaw": "Provocation cases"
+      },
+      {
+        "section": "IPC 505",
+        "title": "Statements conducing to public mischief | लोक दुष्प्रेरण",
+        "description": "Making statements causing fear or alarm to public.",
+        "type": "ipc",
+        "category": "Offences relating to Threats",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Rumour spreading"
+      },
+      {
+        "section": "IPC 506",
+        "title": "Punishment for criminal intimidation | आपराधिक प्रतिरोधन के लिए दंड",
+        "description": "Punishment for criminal intimidation.",
+        "type": "ipc",
+        "category": "Offences relating to Threats",
+        "punishment": "Up to 2 years; threat of death - up to 7 years",
+        "caseLaw": "Threat sentencing"
+      },
+      {
+        "section": "IPC 507",
+        "title": "Anonymous criminal intimidation | गुमनाम आपराधिक प्रतिरोधन",
+        "description": "Criminal intimidation by anonymous communication.",
+        "type": "ipc",
+        "category": "Offences relating to Threats",
+        "punishment": "Up to 2 years in addition to 506",
+        "caseLaw": "Anonymous threats"
+      },
+      {
+        "section": "IPC 509",
+        "title": "Word, gesture or act intended to insult modesty | शब्द, संकेत या कृत्य",
+        "description": "Word, gesture or act intended to insult modesty of woman.",
+        "type": "ipc",
+        "category": "Offences against Women",
+        "punishment": "Up to 3 years + fine",
+        "caseLaw": "Eve teasing cases"
+      },
+      {
+        "section": "IPC 510",
+        "title": "Misconduct in public by drunkard | मद्यप द्वारा लोक में कदाचरण",
+        "description": "Appearing in public place in state of intoxication and causing annoyance.",
+        "type": "ipc",
+        "category": "Public Order",
+        "punishment": "Up to 24 hours + fine",
+        "caseLaw": "Public nuisance"
+      },
+      {
+        "section": "IPC 511",
+        "title": "Attempt to commit offences | अपराध करने का प्रयास",
+        "description": "Attempting to commit offences punishable with imprisonment.",
+        "type": "ipc",
+        "category": "Attempts",
+        "punishment": "Half of maximum for substantive offence",
+        "caseLaw": "Attempt distinction"
+      },
+
+      // ========== CrPC (Criminal Procedure Code 1973) - Key Sections ==========
+      {
+        "section": "CrPC 2",
+        "title": "Definitions | परिभाषाएँ",
+        "description": "Definitions of bailable offence, charge, complaint, investigation, inquiry, trial, etc.",
+        "type": "crpc",
+        "category": "Preliminary",
+        "caseLaw": "Common law definitions"
+      },
+      {
+        "section": "CrPC 41",
+        "title": "Arrest by police without warrant | पुलिस द्वारा बिना वारंट गिरफ्तारी",
+        "description": "Police may arrest without warrant for cognizable offences, reasonable complaint, or suspicion.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "D.K. Basu v. State of WB (1997) - Arrest guidelines"
+      },
+      {
+        "section": "CrPC 41A",
+        "title": "Notice of appearance | उपस्थिति की सूचना",
+        "description": "Police may issue notice instead of arrest for offences punishable up to 7 years.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Arnesh Kumar guidelines"
+      },
+      {
+        "section": "CrPC 46",
+        "title": "Arrest how made | गिरफ्तारी कैसे की जाती है",
+        "description": "Arrest by actual touch or submission to custody.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Physical custody requirements"
+      },
+      {
+        "section": "CrPC 49",
+        "title": "No unnecessary restraint | अनावश्यक बंधन नहीं",
+        "description": "No more restraint than necessary to prevent escape.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Human rights"
+      },
+      {
+        "section": "CrPC 50",
+        "title": "Person arrested to be informed of grounds | गिरफ्तार व्यक्ति को कारण बताना",
+        "description": "Every person arrested must be informed of grounds of arrest and right to bail.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Constitutional requirement"
+      },
+      {
+        "section": "CrPC 56",
+        "title": "Person arrested to be produced before magistrate | मजिस्ट्रेट के समक्ष प्रस्तुत करना",
+        "description": "Person arrested without warrant must be produced before magistrate within 24 hours.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Article 22 requirement"
+      },
+      {
+        "section": "CrPC 57",
+        "title": "No detention beyond 24 hours | 24 घंटे से अधिक हिरासत नहीं",
+        "description": "No police detention beyond 24 hours without magistrate authority.",
+        "type": "crpc",
+        "category": "Arrest",
+        "caseLaw": "Fundamental right"
+      },
+      {
+        "section": "CrPC 91",
+        "title": "Summons to produce document | दस्तावेज पेश करने का समन",
+        "description": "Court may issue summons to produce document or thing.",
+        "type": "crpc",
+        "category": "Process",
+        "caseLaw": "Discovery"
+      },
+      {
+        "section": "CrPC 93",
+        "title": "Search warrant | तलाशी वारंट",
+        "description": "Court may issue search warrant for documents or things.",
+        "type": "crpc",
+        "category": "Search",
+        "caseLaw": "V.S. Kuttan Pillai v. Ramakrishnan (1980) - Search warrants"
+      },
+      {
+        "section": "CrPC 94",
+        "title": "Search of place suspected to contain stolen property | चोरी की संपत्ति की तलाशी",
+        "description": "Search of place suspected to contain stolen property or forged documents.",
+        "type": "crpc",
+        "category": "Search",
+        "caseLaw": "Property search"
+      },
+      {
+        "section": "CrPC 97",
+        "title": "Search for person wrongfully confined | गलत बंधित व्यक्ति की तलाशी",
+        "description": "Search for person wrongfully confined.",
+        "type": "crpc",
+        "category": "Search",
+        "caseLaw": "Habeas corpus"
+      },
+      {
+        "section": "CrPC 100",
+        "title": "Search of place entered by person sought to be arrested | गिरफ्तारी हेतु प्रविष्ट स्थान की तलाशी",
+        "description": "Search of place entered by person sought to be arrested.",
+        "type": "crpc",
+        "category": "Search",
+        "caseLaw": "Entry and search"
+      },
+      {
+        "section": "CrPC 102",
+        "title": "Power to seize property | संपत्ति जब्त करने की शक्ति",
+        "description": "Police may seize property suspected to be stolen or used in offence.",
+        "type": "crpc",
+        "category": "Search",
+        "caseLaw": "Seizure powers"
+      },
+      {
+        "section": "CrPC 125",
+        "title": "Order for maintenance of wives, children and parents | पत्नी, बच्चों और माता-पिता के भरण-पोषण के आदेश",
+        "description": "Magistrate may order maintenance for wife, children, parents unable to maintain themselves.",
+        "type": "crpc",
+        "category": "Maintenance",
+        "punishment": "Up to ₹5000 per month",
+        "caseLaw": "Shah Bano case (1985) - Maintenance rights"
+      },
+      {
+        "section": "CrPC 126",
+        "title": "Procedure for maintenance | भरण-पोषण के लिए प्रक्रिया",
+        "description": "Proceedings may be held in camera, evidence as in summons cases.",
+        "type": "crpc",
+        "category": "Maintenance",
+        "caseLaw": "Maintenance procedure"
+      },
+      {
+        "section": "CrPC 127",
+        "title": "Alteration in maintenance allowance | भरण-पोषण भत्ते में परिवर्तन",
+        "description": "Maintenance may be altered on proof of change in circumstances.",
+        "type": "crpc",
+        "category": "Maintenance",
+        "caseLaw": "Modification"
+      },
+      {
+        "section": "CrPC 128",
+        "title": "Enforcement of maintenance order | भरण-पोषण आदेश का प्रवर्तन",
+        "description": "Maintenance order enforceable as fine.",
+        "type": "crpc",
+        "category": "Maintenance",
+        "caseLaw": "Enforcement"
+      },
+      {
+        "section": "CrPC 154",
+        "title": "Information in cognizable offences | संज्ञेय अपराधों की सूचना",
+        "description": "Every information relating to cognizable offence shall be reduced to writing (FIR).",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Lalita Kumari v. Government of UP (2014) - FIR mandatory for cognizable offences"
+      },
+      {
+        "section": "CrPC 155",
+        "title": "Information in non-cognizable offences | असंज्ञेय अपराधों की सूचना",
+        "description": "Information of non-cognizable offence shall be entered in station diary.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "NCR procedure"
+      },
+      {
+        "section": "CrPC 156",
+        "title": "Police power to investigate cognizable case | संज्ञेय मामले की जांच की पुलिस शक्ति",
+        "description": "Police may investigate cognizable offence without magistrate order.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Investigation powers"
+      },
+      {
+        "section": "CrPC 157",
+        "title": "Procedure for investigation | जांच की प्रक्रिया",
+        "description": "Police shall send report to magistrate and proceed to investigate.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Investigation procedure"
+      },
+      {
+        "section": "CrPC 160",
+        "title": "Police power to require attendance | पुलिस की उपस्थिति मांगने की शक्ति",
+        "description": "Police may require attendance of persons acquainted with facts.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Witness attendance"
+      },
+      {
+        "section": "CrPC 161",
+        "title": "Examination of witnesses by police | पुलिस द्वारा साक्षियों की परीक्षा",
+        "description": "Police may examine witnesses orally, statements not signed.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Nandini Satpathy v. PL Dani (1978) - Right to silence"
+      },
+      {
+        "section": "CrPC 162",
+        "title": "Statements to police not to be signed | पुलिस को दिए गए कथन हस्ताक्षरित नहीं किए जाने",
+        "description": "No statement to police shall be signed, cannot be used except for contradiction.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Evidence rules"
+      },
+      {
+        "section": "CrPC 164",
+        "title": "Recording of confessions and statements | अभिस्वीकृतियों और कथनों का अभिलेखन",
+        "description": "Magistrate may record confession or statement during investigation.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Confession requirements"
+      },
+      {
+        "section": "CrPC 167",
+        "title": "Procedure when investigation not completed | जब जांच पूरी न हो तब प्रक्रिया",
+        "description": "Accused may be remanded to custody; maximum 15 days judicial custody.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Remand procedure"
+      },
+      {
+        "section": "CrPC 173",
+        "title": "Report of police officer | पुलिस अधिकारी की रिपोर्ट",
+        "description": "Police shall forward report (charge sheet) to magistrate on completion of investigation.",
+        "type": "crpc",
+        "category": "Investigation",
+        "caseLaw": "Final report"
+      },
+      {
+        "section": "CrPC 190",
+        "title": "Cognizance of offences by magistrates | मजिस्ट्रेटों द्वारा अपराधों का संज्ञान",
+        "description": "Magistrate may take cognizance of offence upon complaint, police report, or own knowledge.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Cognizance"
+      },
+      {
+        "section": "CrPC 200",
+        "title": "Examination of complainant | परिवादी की परीक्षा",
+        "description": "Magistrate shall examine complainant and witnesses on oath.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Complaint procedure"
+      },
+      {
+        "section": "CrPC 202",
+        "title": "Postponement of issue of process | प्रक्रिया जारी करने का स्थगन",
+        "description": "Magistrate may postpone issue of process for inquiry.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Inquiry"
+      },
+      {
+        "section": "CrPC 203",
+        "title": "Dismissal of complaint | परिवाद का खारिज किया जाना",
+        "description": "Magistrate may dismiss complaint if no sufficient ground.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Dismissal reasons"
+      },
+      {
+        "section": "CrPC 204",
+        "title": "Issue of process | प्रक्रिया जारी करना",
+        "description": "If sufficient grounds, magistrate shall issue summons or warrant.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Process"
+      },
+      {
+        "section": "CrPC 207",
+        "title": "Supply to accused of police report and documents | अभियुक्त को पुलिस रिपोर्ट और दस्तावेज देना",
+        "description": "Accused entitled to copies of police report, FIR, statements, etc.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Right to documents"
+      },
+      {
+        "section": "CrPC 209",
+        "title": "Commitment of case to Court of Session | सत्र न्यायालय को मामले का प्रेषण",
+        "description": "Magistrate shall commit case triable exclusively by Sessions Court.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Commitment"
+      },
+      {
+        "section": "CrPC 211",
+        "title": "Contents of charge | अभियोग की सामग्री",
+        "description": "Charge shall state offence with which accused is charged.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Charge requirements"
+      },
+      {
+        "section": "CrPC 227",
+        "title": "Discharge | अभियुक्त का विमोचन",
+        "description": "If no sufficient grounds, Sessions Judge may discharge accused.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Discharge"
+      },
+      {
+        "section": "CrPC 228",
+        "title": "Framing of charge | अभियोग अभिनिर्धारण",
+        "description": "If grounds exist, charge shall be framed.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Charge framing"
+      },
+      {
+        "section": "CrPC 235",
+        "title": "Judgment of acquittal or conviction | दोषमुक्ति या दोषसिद्धि का निर्णय",
+        "description": "After hearing, judge shall acquit or convict.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Judgment"
+      },
+      {
+        "section": "CrPC 248",
+        "title": "Acquittal or conviction in warrant cases | वारंट मामलों में दोषमुक्ति या दोषसिद्धि",
+        "description": "Magistrate may acquit or convict after evidence.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Warrant trial"
+      },
+      {
+        "section": "CrPC 250",
+        "title": "Compensation for accusation without reasonable cause | बिना युक्तियुक्त कारण के अभियोजन के लिए क्षतिपूर्ति",
+        "description": "Magistrate may order compensation for false complaint.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Malicious prosecution"
+      },
+      {
+        "section": "CrPC 260",
+        "title": "Summary trial by magistrate | मजिस्ट्रेट द्वारा संक्षिप्त विचारण",
+        "description": "Magistrate may try certain offences summarily.",
+        "type": "crpc",
+        "category": "Trial",
+        "caseLaw": "Summary procedure"
+      },
+      {
+        "section": "CrPC 265A",
+        "title": "Application of Chapter (Plea Bargaining) | अध्याय का प्रयोजन (अभियोजन विनिमय)",
+        "description": "Plea bargaining applies to offences not punishable with death or life imprisonment.",
+        "type": "crpc",
+        "category": "Plea Bargaining",
+        "caseLaw": "Plea bargaining"
+      },
+      {
+        "section": "CrPC 265B",
+        "title": "Application for plea bargaining | अभियोजन विनिमय के लिए आवेदन",
+        "description": "Accused may file application for plea bargaining.",
+        "type": "crpc",
+        "category": "Plea Bargaining",
+        "caseLaw": "Application"
+      },
+      {
+        "section": "CrPC 320",
+        "title": "Compounding of offences | अपराधों का समझौता",
+        "description": "Certain offences may be compounded by parties.",
+        "type": "crpc",
+        "category": "Compounding",
+        "caseLaw": "Compromise"
+      },
+      {
+        "section": "CrPC 321",
+        "title": "Withdrawal from prosecution | अभियोजन से वापसी",
+        "description": "Public Prosecutor may withdraw from prosecution with consent.",
+        "type": "crpc",
+        "category": "Prosecution",
+        "caseLaw": "Sheonandan Paswan v. State of Bihar (1987) - Withdrawal"
+      },
+      {
+        "section": "CrPC 357",
+        "title": "Order to pay compensation | क्षतिपूर्ति अदा करने का आदेश",
+        "description": "Court may order accused to pay compensation to victim.",
+        "type": "crpc",
+        "category": "Compensation",
+        "caseLaw": "Victim compensation"
+      },
+      {
+        "section": "CrPC 357A",
+        "title": "Victim compensation scheme | पीड़ित क्षतिपूर्ति योजना",
+        "description": "State to prepare victim compensation scheme.",
+        "type": "crpc",
+        "category": "Compensation",
+        "caseLaw": "Victim rights"
+      },
+      {
+        "section": "CrPC 360",
+        "title": "Release on probation | परिवीक्षा पर रिहाई",
+        "description": "First offenders may be released on probation.",
+        "type": "crpc",
+        "category": "Sentencing",
+        "caseLaw": "Probation"
+      },
+      {
+        "section": "CrPC 372",
+        "title": "Appeals | अपीलें",
+        "description": "No appeal from conviction by High Court in extraordinary jurisdiction.",
+        "type": "crpc",
+        "category": "Appeals",
+        "caseLaw": "Appeal rights"
+      },
+      {
+        "section": "CrPC 374",
+        "title": "Appeals from convictions | दोषसिद्धियों से अपीलें",
+        "description": "Convicted person may appeal to higher court.",
+        "type": "crpc",
+        "category": "Appeals",
+        "caseLaw": "Appeal procedure"
+      },
+      {
+        "section": "CrPC 378",
+        "title": "Appeal in case of acquittal | दोषमुक्ति के मामले में अपील",
+        "description": "State may appeal against acquittal with leave.",
+        "type": "crpc",
+        "category": "Appeals",
+        "caseLaw": "Acquittal appeal"
+      },
+      {
+        "section": "CrPC 389",
+        "title": "Suspension of sentence pending appeal | अपील लंबित रहने पर दंड का निलंबन",
+        "description": "Court may suspend sentence pending appeal.",
+        "type": "crpc",
+        "category": "Appeals",
+        "caseLaw": "Bail pending appeal"
+      },
+      {
+        "section": "CrPC 397",
+        "title": "Calling for records to examine legality | विधिमान्यता की परीक्षा हेतु अभिलेख मंगाना",
+        "description": "High Court may call for records of inferior court.",
+        "type": "crpc",
+        "category": "Revision",
+        "caseLaw": "Revision powers"
+      },
+      {
+        "section": "CrPC 401",
+        "title": "High Court powers of revision | उच्च न्यायालय की पुनरीक्षण शक्तियाँ",
+        "description": "High Court may exercise revisional jurisdiction.",
+        "type": "crpc",
+        "category": "Revision",
+        "caseLaw": "Revision"
+      },
+      {
+        "section": "CrPC 428",
+        "title": "Period of detention undergone to be set off | कारावास अवधि की छूट",
+        "description": "Pre-conviction detention to be set off against sentence.",
+        "type": "crpc",
+        "category": "Sentencing",
+        "caseLaw": "Set off"
+      },
+      {
+        "section": "CrPC 436",
+        "title": "Bail in bailable offences | जमानती अपराधों में जमानत",
+        "description": "Person arrested for bailable offence shall be released on bail.",
+        "type": "crpc",
+        "category": "Bail",
+        "caseLaw": "Rights to bail"
+      },
+      {
+        "section": "CrPC 437",
+        "title": "Bail in non-bailable offences | अजमानतीय अपराधों में जमानत",
+        "description": "Court may grant bail in non-bailable offences with conditions.",
+        "type": "crpc",
+        "category": "Bail",
+        "caseLaw": "State of Rajasthan v. Balchand (1977) - Bail not jail"
+      },
+      {
+        "section": "CrPC 438",
+        "title": "Anticipatory bail | अग्रिम जमानत",
+        "description": "Direction for grant of bail to person apprehending arrest.",
+        "type": "crpc",
+        "category": "Bail",
+        "caseLaw": "Sushila Aggarwal v. State (2020) - Anticipatory bail"
+      },
+      {
+        "section": "CrPC 439",
+        "title": "High Court and Sessions Court powers | उच्च न्यायालय और सत्र न्यायालय की शक्तियाँ",
+        "description": "Special powers of High Court and Sessions Court regarding bail.",
+        "type": "crpc",
+        "category": "Bail",
+        "caseLaw": "Bail jurisdiction"
+      },
+      {
+        "section": "CrPC 482",
+        "title": "Saving of inherent powers of High Court | उच्च न्यायालय की अंतर्निहित शक्तियों की सुरक्षा",
+        "description": "High Court may exercise inherent powers to prevent abuse of process.",
+        "type": "crpc",
+        "category": "Inherent Powers",
+        "caseLaw": "State of Haryana v. Bhajan Lal (1992) - Quashing FIR guidelines"
+      },
+
+      // ========== INDIAN EVIDENCE ACT 1872 ==========
+      {
+        "section": "IEA 3",
+        "title": "Interpretation clause | निर्वचन खंड",
+        "description": "Definitions of court, fact, relevant fact, evidence, proof, proved, disproved, not proved.",
+        "type": "evidence",
+        "category": "Preliminary",
+        "caseLaw": "Evidence definitions"
+      },
+      {
+        "section": "IEA 5",
+        "title": "Evidence may be given of facts in issue | विवाद्यक तथ्यों के साक्ष्य दिए जा सकते हैं",
+        "description": "Evidence may be given of facts in issue and relevant facts.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Relevancy"
+      },
+      {
+        "section": "IEA 6",
+        "title": "Relevancy of facts forming part of same transaction | एक ही व्यवहार के भाग तथ्यों की प्रासंगिकता",
+        "description": "Facts which are part of same transaction are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Res gestae"
+      },
+      {
+        "section": "IEA 7",
+        "title": "Facts which are occasion, cause or effect | अवसर, कारण या प्रभाव वाले तथ्य",
+        "description": "Facts showing occasion, cause, effect of fact in issue are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Cause and effect"
+      },
+      {
+        "section": "IEA 8",
+        "title": "Motive, preparation and conduct | अभिप्रेरणा, तैयारी और आचरण",
+        "description": "Motive, preparation, previous conduct are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Motive evidence"
+      },
+      {
+        "section": "IEA 9",
+        "title": "Facts necessary to explain or introduce | व्याख्या या परिचय के लिए आवश्यक तथ्य",
+        "description": "Facts necessary to explain or introduce relevant facts are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Explanatory facts"
+      },
+      {
+        "section": "IEA 10",
+        "title": "Things said or done by conspirator | षड्यंत्रकारी द्वारा कही या की गई बातें",
+        "description": "Statements by conspirator in reference to common intention are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Conspiracy evidence"
+      },
+      {
+        "section": "IEA 11",
+        "title": "Facts inconsistent with fact in issue | विवाद्यक तथ्य से असंगत तथ्य",
+        "description": "Facts inconsistent with any fact in issue are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Inconsistent facts"
+      },
+      {
+        "section": "IEA 14",
+        "title": "Facts showing existence of state of mind | मनोदशा की विद्यमानता दर्शाने वाले तथ्य",
+        "description": "Facts showing state of mind, body, or feeling are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Mental state"
+      },
+      {
+        "section": "IEA 15",
+        "title": "Facts bearing on question whether act was accidental | आकस्मिकता पर तथ्य",
+        "description": "Facts showing act was not accidental are relevant.",
+        "type": "evidence",
+        "category": "Relevancy",
+        "caseLaw": "Intent evidence"
+      },
+      {
+        "section": "IEA 17",
+        "title": "Admission defined | स्वीकृति की परिभाषा",
+        "description": "Admission is statement suggesting inference as to fact in issue.",
+        "type": "evidence",
+        "category": "Admissions",
+        "caseLaw": "Admission"
+      },
+      {
+        "section": "IEA 18",
+        "title": "Admission by party | पक्षकार द्वारा स्वीकृति",
+        "description": "Statements by party to proceeding are admissions.",
+        "type": "evidence",
+        "category": "Admissions",
+        "caseLaw": "Party admission"
+      },
+      {
+        "section": "IEA 24",
+        "title": "Confession caused by inducement | प्रलोभन से की गई अभिस्वीकृति",
+        "description": "Confession caused by inducement, threat or promise is irrelevant.",
+        "type": "evidence",
+        "category": "Confessions",
+        "caseLaw": "Voluntary confession"
+      },
+      {
+        "section": "IEA 25",
+        "title": "Confession to police | पुलिस को की गई अभिस्वीकृति",
+        "description": "Confession to police officer cannot be proved.",
+        "type": "evidence",
+        "category": "Confessions",
+        "caseLaw": "No evidence"
+      },
+      {
+        "section": "IEA 26",
+        "title": "Confession by accused in police custody | पुलिस हिरासत में अभियुक्त द्वारा अभिस्वीकृति",
+        "description": "Confession while in police custody cannot be proved.",
+        "type": "evidence",
+        "category": "Confessions",
+        "caseLaw": "Custodial confession"
+      },
+      {
+        "section": "IEA 27",
+        "title": "Discovery of fact | तथ्य का पता लगना",
+        "description": "Information leading to discovery of fact may be proved.",
+        "type": "evidence",
+        "category": "Confessions",
+        "caseLaw": "Pulukuri Kottaya v. Emperor (1947) - Discovery evidence"
+      },
+      {
+        "section": "IEA 28",
+        "title": "Confession after removal of impression | प्रभाव हटने के बाद अभिस्वीकृति",
+        "description": "Confession made after removal of inducement is relevant.",
+        "type": "evidence",
+        "category": "Confessions",
+        "caseLaw": "Subsequent confession"
+      },
+      {
+        "section": "IEA 32",
+        "title": "Dying declaration | मृत्युकालिक कथन",
+        "description": "Statements by person as to cause of death are relevant.",
+        "type": "evidence",
+        "category": "Dying Declaration",
+        "caseLaw": "Pakala Narayana Swami v. Emperor (1939) - Dying declaration"
+      },
+      {
+        "section": "IEA 45",
+        "title": "Opinion of experts | विशेषज्ञों की राय",
+        "description": "Opinion of experts in foreign law, science, art, handwriting are relevant.",
+        "type": "evidence",
+        "category": "Opinions",
+        "caseLaw": "Expert evidence"
+      },
+      {
+        "section": "IEA 47",
+        "title": "Opinion as to handwriting | लेख के संबंध में राय",
+        "description": "Opinion of person acquainted with handwriting is relevant.",
+        "type": "evidence",
+        "category": "Opinions",
+        "caseLaw": "Handwriting"
+      },
+      {
+        "section": "IEA 50",
+        "title": "Opinion on relationship | संबंध पर राय",
+        "description": "Opinion of persons having special means of knowledge on relationship is relevant.",
+        "type": "evidence",
+        "category": "Opinions",
+        "caseLaw": "Family relationship"
+      },
+      {
+        "section": "IEA 58",
+        "title": "Facts admitted need not be proved | स्वीकृत तथ्य साबित नहीं किए जाने",
+        "description": "Facts admitted need not be proved.",
+        "type": "evidence",
+        "category": "Proof",
+        "caseLaw": "Judicial admissions"
+      },
+      {
+        "section": "IEA 59",
+        "title": "Proof of facts by oral evidence | मौखिक साक्ष्य द्वारा तथ्य साबित करना",
+        "description": "All facts except contents of documents may be proved by oral evidence.",
+        "type": "evidence",
+        "category": "Oral Evidence",
+        "caseLaw": "Oral evidence"
+      },
+      {
+        "section": "IEA 60",
+        "title": "Oral evidence must be direct | मौखिक साक्ष्य प्रत्यक्ष होना चाहिए",
+        "description": "Oral evidence must be direct (hearsay not allowed).",
+        "type": "evidence",
+        "category": "Oral Evidence",
+        "caseLaw": "Hearsay rule"
+      },
+      {
+        "section": "IEA 61",
+        "title": "Proof of contents of documents | दस्तावेजों की सामग्री साबित करना",
+        "description": "Contents of documents may be proved by primary or secondary evidence.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Document proof"
+      },
+      {
+        "section": "IEA 62",
+        "title": "Primary evidence | प्राथमिक साक्ष्य",
+        "description": "Primary evidence means document itself produced for inspection.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Original document"
+      },
+      {
+        "section": "IEA 63",
+        "title": "Secondary evidence | द्वितीयक साक्ष्य",
+        "description": "Secondary evidence includes certified copies, copies made by mechanical process, etc.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Copies"
+      },
+      {
+        "section": "IEA 64",
+        "title": "Proof of documents by primary evidence | प्राथमिक साक्ष्य द्वारा दस्तावेज साबित करना",
+        "description": "Documents must be proved by primary evidence except as provided.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Best evidence rule"
+      },
+      {
+        "section": "IEA 65",
+        "title": "Cases in which secondary evidence may be given | जिन मामलों में द्वितीयक साक्ष्य दिए जा सकते हैं",
+        "description": "Secondary evidence may be given when original lost, destroyed, or in possession of opponent.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "H. Siddiqui v. A. Ramalingam (2011) - Secondary evidence"
+      },
+      {
+        "section": "IEA 67",
+        "title": "Proof of signature and handwriting | हस्ताक्षर और लेख साबित करना",
+        "description": "Signature or handwriting must be proved to be that of person.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Signature proof"
+      },
+      {
+        "section": "IEA 68",
+        "title": "Proof of execution of document required by law to be attested | विधि द्वारा सत्यापित दस्तावेज",
+        "description": "Document required by law to be attested must be proved by calling attesting witness.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Attestation"
+      },
+      {
+        "section": "IEA 73",
+        "title": "Comparison of signature, writing or seal | हस्ताक्षर, लेख या मुद्रा की तुलना",
+        "description": "Court may compare disputed signature with admitted signature.",
+        "type": "evidence",
+        "category": "Documentary Evidence",
+        "caseLaw": "Handwriting comparison"
+      },
+      {
+        "section": "IEA 74",
+        "title": "Public documents | लोक दस्तावेज",
+        "description": "Public documents include documents forming acts of sovereign authority, public records, etc.",
+        "type": "evidence",
+        "category": "Public Documents",
+        "caseLaw": "Public records"
+      },
+      {
+        "section": "IEA 75",
+        "title": "Private documents | निजी दस्तावेज",
+        "description": "All other documents are private.",
+        "type": "evidence",
+        "category": "Public Documents",
+        "caseLaw": "Private docs"
+      },
+      {
+        "section": "IEA 76",
+        "title": "Certified copies of public documents | लोक दस्तावेजों की प्रमाणित प्रतियां",
+        "description": "Every person has right to certified copies of public documents.",
+        "type": "evidence",
+        "category": "Public Documents",
+        "caseLaw": "RTI"
+      },
+      {
+        "section": "IEA 79",
+        "title": "Presumption as to genuineness of certified copies | प्रमाणित प्रतियों की प्रामाणिकता अनुमान",
+        "description": "Certified copies are presumed genuine.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Presumption"
+      },
+      {
+        "section": "IEA 80",
+        "title": "Presumption as to documents produced as record of evidence | साक्ष्य अभिलेख के रूप में दस्तावेजों के बारे में अनुमान",
+        "description": "Documents purporting to be record of evidence are presumed genuine.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Court records"
+      },
+      {
+        "section": "IEA 81",
+        "title": "Presumption as to Gazettes, newspapers, etc. | राजपत्रों, समाचारपत्रों आदि के बारे में अनुमान",
+        "description": "Gazettes and newspapers are presumed genuine.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Official gazettes"
+      },
+      {
+        "section": "IEA 85",
+        "title": "Presumption as to powers-of-attorney | मुखतारनामों के बारे में अनुमान",
+        "description": "Power of attorney executed before notary is presumed genuine.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "POA"
+      },
+      {
+        "section": "IEA 88A",
+        "title": "Presumption as to electronic messages | इलेक्ट्रॉनिक संदेशों के बारे में अनुमान",
+        "description": "Electronic messages forwarded by originator are presumed received.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Email evidence"
+      },
+      {
+        "section": "IEA 90",
+        "title": "Presumption as to documents thirty years old | तीस वर्ष पुराने दस्तावेजों के बारे में अनुमान",
+        "description": "Documents 30 years old from proper custody are presumed genuine.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Ancient documents"
+      },
+      {
+        "section": "IEA 101",
+        "title": "Burden of proof | सबूत का भार",
+        "description": "Whoever desires court to give judgment must prove facts.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Onus"
+      },
+      {
+        "section": "IEA 102",
+        "title": "Burden of proof lies on person who would fail | सबूत का भार उस व्यक्ति पर है जो विफल होगा",
+        "description": "Burden of proof lies on person who would fail if no evidence given.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Onus"
+      },
+      {
+        "section": "IEA 103",
+        "title": "Burden of proof as to particular fact | किसी विशिष्ट तथ्य के बारे में सबूत का भार",
+        "description": "Burden of proof as to particular fact lies on person who asserts it.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Affirmative"
+      },
+      {
+        "section": "IEA 104",
+        "title": "Burden of proving fact to be proved to make evidence admissible | साक्ष्य ग्राह्य बनाने के लिए तथ्य साबित करने का भार",
+        "description": "Person who wants to give evidence must prove foundational facts.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Conditional"
+      },
+      {
+        "section": "IEA 105",
+        "title": "Burden of proving exception | अपवाद साबित करने का भार",
+        "description": "When accused claims exception, burden to prove existence.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "General exceptions"
+      },
+      {
+        "section": "IEA 106",
+        "title": "Burden of proving fact within knowledge | विशिष्ट ज्ञान के तथ्य साबित करने का भार",
+        "description": "When fact is within knowledge of person, burden on them.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Special knowledge"
+      },
+      {
+        "section": "IEA 107",
+        "title": "Burden of proving death of person known to have been alive | जीवित ज्ञात व्यक्ति की मृत्यु साबित करने का भार",
+        "description": "Person asserting death of person known alive within 30 years must prove.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Presumption of life"
+      },
+      {
+        "section": "IEA 108",
+        "title": "Burden of proving that person is alive | व्यक्ति के जीवित होने का भार",
+        "description": "Person asserting person is alive after 7 years unheard of must prove.",
+        "type": "evidence",
+        "category": "Burden of Proof",
+        "caseLaw": "Presumption of death"
+      },
+      {
+        "section": "IEA 112",
+        "title": "Birth during marriage conclusive proof of legitimacy | विवाह के दौरान जन्म वैधता का अंतिम सबूत",
+        "description": "Child born during valid marriage is conclusive proof of legitimacy.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Legitimacy"
+      },
+      {
+        "section": "IEA 113A",
+        "title": "Presumption as to abetment of suicide by married woman | विवाहिता की आत्महत्या का उकसाना अनुमान",
+        "description": "Presumption of abetment if suicide within 7 years of marriage and cruelty shown.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Dowry death"
+      },
+      {
+        "section": "IEA 113B",
+        "title": "Presumption as to dowry death | दहेज मृत्यु के बारे में अनुमान",
+        "description": "Presumption of dowry death if death occurs within 7 years and cruelty shown.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "304B IPC"
+      },
+      {
+        "section": "IEA 114",
+        "title": "Court may presume existence of certain facts | न्यायालय कुछ तथ्यों की विद्यमानता का अनुमान लगा सकता है",
+        "description": "Court may presume existence of common course of natural events.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Illustrations"
+      },
+      {
+        "section": "IEA 114A",
+        "title": "Presumption as to absence of consent in rape | बलात्कार में सहमति के अभाव का अनुमान",
+        "description": "In rape prosecution, court may presume absence of consent.",
+        "type": "evidence",
+        "category": "Presumptions",
+        "caseLaw": "Rape cases"
+      },
+      {
+        "section": "IEA 115",
+        "title": "Estoppel | विबंध",
+        "description": "When person causes another to believe thing, cannot deny.",
+        "type": "evidence",
+        "category": "Estoppel",
+        "caseLaw": "Promissory estoppel"
+      },
+      {
+        "section": "IEA 116",
+        "title": "Estoppel of tenant and licensee | किराएदार और अनुज्ञप्तिधारी का विबंध",
+        "description": "Tenant cannot deny landlord's title.",
+        "type": "evidence",
+        "category": "Estoppel",
+        "caseLaw": "Tenant estoppel"
+      },
+      {
+        "section": "IEA 117",
+        "title": "Estoppel of acceptor of bill of exchange | विनिमय पत्र स्वीकारकर्ता का विबंध",
+        "description": "Acceptor cannot deny drawer's existence.",
+        "type": "evidence",
+        "category": "Estoppel",
+        "caseLaw": "Negotiable instruments"
+      },
+      {
+        "section": "IEA 118",
+        "title": "Who may testify | कौन साक्ष्य दे सकता है",
+        "description": "All persons are competent to testify unless prevented by tender years, old age, disease.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "Competence"
+      },
+      {
+        "section": "IEA 119",
+        "title": "Witness unable to communicate verbally | मौखिक रूप से संप्रेषण में असमर्थ साक्षी",
+        "description": "Dumb witnesses may give evidence by writing or signs.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "Sign language"
+      },
+      {
+        "section": "IEA 120",
+        "title": "Parties and their spouses | पक्षकार और उनके पति या पत्नी",
+        "description": "Parties to civil proceedings and their spouses are competent witnesses.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "Spousal evidence"
+      },
+      {
+        "section": "IEA 121",
+        "title": "Judge and magistrate | न्यायाधीश और मजिस्ट्रेट",
+        "description": "Judges and magistrates cannot be compelled to answer questions about conduct.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "Judicial privilege"
+      },
+      {
+        "section": "IEA 122",
+        "title": "Communications during marriage | विवाह के दौरान संचार",
+        "description": "Spouses not compelled to disclose communications during marriage.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "Marital privilege"
+      },
+      {
+        "section": "IEA 123",
+        "title": "Evidence as to affairs of State | राज्य कार्यों के बारे में साक्ष्य",
+        "description": "Unpublished official records relating to affairs of State are privileged.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "State secrets"
+      },
+      {
+        "section": "IEA 124",
+        "title": "Official communications | आधिकारिक संचार",
+        "description": "Public officers not compelled to disclose official communications.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "Official privilege"
+      },
+      {
+        "section": "IEA 125",
+        "title": "Information as to commission of offences | अपराधों के कमीशन की सूचना",
+        "description": "Informants in criminal cases not compelled to disclose identity.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "Informant privilege"
+      },
+      {
+        "section": "IEA 126",
+        "title": "Professional communications | व्यावसायिक संचार",
+        "description": "Legal practitioners not compelled to disclose client communications.",
+        "type": "evidence",
+        "category": "Privilege",
+        "caseLaw": "Attorney-client privilege"
+      },
+      {
+        "section": "IEA 132",
+        "title": "Witness not excused from answering on ground of answer incriminating | साक्षी को आपराधिक उत्तर के आधार पर उत्तर देने से छूट नहीं",
+        "description": "Witness must answer incriminating questions but may claim protection.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "Self-incrimination"
+      },
+      {
+        "section": "IEA 133",
+        "title": "Accomplice | सहापराधी",
+        "description": "Accomplice is competent witness but conviction on uncorroborated evidence is not illegal.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "R v. Baskerville (1916) - Accomplice corroboration"
+      },
+      {
+        "section": "IEA 134",
+        "title": "Number of witnesses | साक्षियों की संख्या",
+        "description": "No particular number of witnesses required for proof.",
+        "type": "evidence",
+        "category": "Witnesses",
+        "caseLaw": "Single witness"
+      },
+      {
+        "section": "IEA 135",
+        "title": "Order of production and examination of witnesses | साक्षियों के पेश करने और परीक्षा का क्रम",
+        "description": "Court determines order of examination.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Procedure"
+      },
+      {
+        "section": "IEA 136",
+        "title": "Judge to decide as to admissibility of evidence | साक्ष्य की ग्राह्यता पर निर्णय",
+        "description": "Judge decides admissibility.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Admissibility"
+      },
+      {
+        "section": "IEA 137",
+        "title": "Examination-in-chief | मुख्य परीक्षा",
+        "description": "Examination of witness by party who calls him.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Direct"
+      },
+      {
+        "section": "IEA 138",
+        "title": "Cross-examination | जिरह",
+        "description": "Opposite party may cross-examine after examination-in-chief.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Cross-examination"
+      },
+      {
+        "section": "IEA 141",
+        "title": "Leading questions | व्युत्प्रेरक प्रश्न",
+        "description": "Leading questions suggest the answer.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Leading"
+      },
+      {
+        "section": "IEA 142",
+        "title": "When leading questions must not be asked | व्युत्प्रेरक प्रश्न कब नहीं पूछे जाने",
+        "description": "Leading questions not allowed in examination-in-chief.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Objection"
+      },
+      {
+        "section": "IEA 143",
+        "title": "When leading questions may be asked | व्युत्प्रेरक प्रश्न कब पूछे जा सकते हैं",
+        "description": "Leading questions allowed in cross-examination.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Cross"
+      },
+      {
+        "section": "IEA 145",
+        "title": "Cross-examination as to previous statements | पूर्व कथनों के बारे में जिरह",
+        "description": "Witness may be cross-examined about previous statements.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Contradiction"
+      },
+      {
+        "section": "IEA 146",
+        "title": "Questions lawful in cross-examination | जिरह में विधिमान्य प्रश्न",
+        "description": "Questions testing veracity may be asked.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Credibility"
+      },
+      {
+        "section": "IEA 155",
+        "title": "Impeaching credit of witness | साक्षी की साख को चुनौती",
+        "description": "Credit may be impeached by evidence of bad character, contradictory statements, etc.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Impeachment"
+      },
+      {
+        "section": "IEA 157",
+        "title": "Former statements of witness may be proved | साक्षी के पूर्व कथन साबित किए जा सकते हैं",
+        "description": "Former consistent statements may be proved to corroborate.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Corroboration"
+      },
+      {
+        "section": "IEA 158",
+        "title": "What matters may be proved in connection with proved statement | साबित कथन के संबंध में क्या साबित किया जा सकता है",
+        "description": "Statements may be proved to corroborate or contradict.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Context"
+      },
+      {
+        "section": "IEA 159",
+        "title": "Refreshing memory | स्मरण शक्ति ताजा करना",
+        "description": "Witness may refresh memory by writing made at time.",
+        "type": "evidence",
+        "category": "Examination",
+        "caseLaw": "Notes"
+      },
+      {
+        "section": "IEA 165",
+        "title": "Judge's power to put questions | न्यायाधीश की प्रश्न पूछने की शक्ति",
+        "description": "Judge may ask any question to discover truth.",
+        "type": "evidence",
+        "category": "Court Powers",
+        "caseLaw": "Truth discovery"
+      },
+
+      // ========== SPECIAL ACTS AND CENTRAL LEGISLATIONS ==========
+      {
+        "section": "Dowry Prohibition Act 1961",
+        "title": "Dowry Prohibition | दहेज निषेध अधिनियम",
+        "description": "Prohibition of giving or taking dowry in connection with marriage.",
+        "type": "special",
+        "category": "Family Law",
+        "punishment": "5 years + fine ₹15,000",
+        "caseLaw": "State v. Laxman Kumar (1986) - Dowry prohibition"
+      },
+      {
+        "section": "Protection of Women from Domestic Violence Act 2005",
+        "title": "Domestic Violence Act | घरेलू हिंसा अधिनियम",
+        "description": "Protection of women from domestic violence in family relationships.",
+        "type": "special",
+        "category": "Family Law",
+        "punishment": "Protection orders, monetary relief",
+        "caseLaw": "Indra Sarma v. V.K.V. Sarma (2013) - Live-in relationships"
+      },
+      {
+        "section": "Hindu Marriage Act 1955",
+        "title": "Hindu Marriage Act | हिंदू विवाह अधिनियम",
+        "description": "Law relating to marriage among Hindus, divorce, maintenance.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Shah Bano case - Maintenance"
+      },
+      {
+        "section": "Hindu Succession Act 1956",
+        "title": "Hindu Succession | हिंदू उत्तराधिकार अधिनियम",
+        "description": "Succession and inheritance rights among Hindus.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Vineeta Sharma v. Rakesh Sharma (2020) - Daughters' coparcenary rights"
+      },
+      {
+        "section": "Indian Contract Act 1872",
+        "title": "Contract Act | संविदा अधिनियम",
+        "description": "Law relating to contracts in India.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Section 10 - Essentials of valid contract"
+      },
+      {
+        "section": "Transfer of Property Act 1882",
+        "title": "Property Transfer Act | संपत्ति अंतरण अधिनियम",
+        "description": "Law relating to transfer of property by act of parties.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Section 53A - Doctrine of part performance"
+      },
+      {
+        "section": "Right to Information Act 2005",
+        "title": "RTI Act | सूचना का अधिकार अधिनियम",
+        "description": "Right to information for citizens from public authorities.",
+        "type": "special",
+        "category": "Constitutional Law",
+        "caseLaw": "CBSE v. Aditya Bandopadhyay (2011) - Exam papers under RTI"
+      },
+      {
+        "section": "Information Technology Act 2000",
+        "title": "IT Act | सूचना प्रौद्योगिकी अधिनियम",
+        "description": "Legal framework for electronic governance and cyber crimes.",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "Varies by section",
+        "caseLaw": "Shreya Singhal v. Union of India (2015) - Section 66A struck down"
+      },
+      {
+        "section": "IT Act 66A",
+        "title": "Offensive messages | आपत्तिजक संदेश",
+        "description": "Punishment for sending offensive messages through communication service. (Struck down in 2015)",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "Historical: 3 years + fine",
+        "caseLaw": "Shreya Singhal v. Union of India (2015) - Struck down as unconstitutional"
+      },
+      {
+        "section": "IT Act 66C",
+        "title": "Identity theft | पहचान की चोरी",
+        "description": "Punishment for identity theft using computer resources.",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "3 years + fine ₹1 lakh",
+        "caseLaw": "Cyber fraud"
+      },
+      {
+        "section": "IT Act 66D",
+        "title": "Cheating by personation using computer | कंप्यूटर से रूप धारण कर धोखाधड़ी",
+        "description": "Punishment for cheating by personation using computer.",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "3 years + fine ₹1 lakh",
+        "caseLaw": "Online fraud"
+      },
+      {
+        "section": "IT Act 66E",
+        "title": "Violation of privacy | गोपनीयता का उल्लंघन",
+        "description": "Punishment for capturing or publishing images of private area.",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "3 years + fine ₹2 lakh",
+        "caseLaw": "Morphed photos"
+      },
+      {
+        "section": "IT Act 67",
+        "title": "Publishing obscene material | अश्लील सामग्री प्रकाशन",
+        "description": "Punishment for publishing or transmitting obscene material electronically.",
+        "type": "special",
+        "category": "Cyber Law",
+        "punishment": "3-5 years + fine",
+        "caseLaw": "Pornography cases"
+      },
+      {
+        "section": "Narcotic Drugs and Psychotropic Substances Act 1985",
+        "title": "NDPS Act | मादक द्रव्य अधिनियम",
+        "description": "Control and regulation of narcotic drugs and psychotropic substances.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "6 months to death + fine",
+        "caseLaw": "State of Punjab v. Baldev Singh (1999) - Search and seizure"
+      },
+      {
+        "section": "Prevention of Corruption Act 1988",
+        "title": "PC Act | भ्रष्टाचार निवारण अधिनियम",
+        "description": "Prevention of corruption in government departments.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "6 months to 7 years + fine",
+        "caseLaw": "Subramanian Swamy v. CBI (2014) - Sanction for prosecution"
+      },
+      {
+        "section": "Juvenile Justice Act 2015",
+        "title": "JJ Act | किशोर न्याय अधिनियम",
+        "description": "Care, protection, and rehabilitation of children in conflict with law.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Nirbhaya case - Juvenile age determination"
+      },
+      {
+        "section": "POCSO Act 2012",
+        "title": "Protection of Children from Sexual Offences | यौन अपराधों से बालकों का संरक्षण अधिनियम",
+        "description": "Protection of children from sexual assault, harassment, and pornography.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "3 years to life imprisonment",
+        "caseLaw": "Independent Thought v. Union of India (2017) - Marital rape exception"
+      },
+      {
+        "section": "Motor Vehicles Act 1988",
+        "title": "MV Act | मोटर यान अधिनियम",
+        "description": "Law relating to motor vehicles, licensing, and accident compensation.",
+        "type": "special",
+        "category": "Transport Law",
+        "caseLaw": "Hit and run cases"
+      },
+      {
+        "section": "Consumer Protection Act 2019",
+        "title": "Consumer Act | उपभोक्ता संरक्षण अधिनियम",
+        "description": "Protection of consumer rights and redressal of complaints.",
+        "type": "special",
+        "category": "Consumer Law",
+        "caseLaw": "Medical negligence"
+      },
+      {
+        "section": "Factories Act 1948",
+        "title": "Factories Act | कारखाना अधिनियम",
+        "description": "Health, safety, and welfare of factory workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Industrial safety"
+      },
+      {
+        "section": "Industrial Disputes Act 1947",
+        "title": "Industrial Disputes | औद्योगिक विवाद अधिनियम",
+        "description": "Investigation and settlement of industrial disputes.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Retrenchment compensation"
+      },
+      {
+        "section": "Payment of Gratuity Act 1972",
+        "title": "Gratuity Act | उपदान अधिनियम",
+        "description": "Payment of gratuity to employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Eligibility"
+      },
+      {
+        "section": "Employees' Provident Fund Act 1952",
+        "title": "EPF Act | भविष्य निधि अधिनियम",
+        "description": "Provident fund for employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "PF contributions"
+      },
+      {
+        "section": "Minimum Wages Act 1948",
+        "title": "Minimum Wages | न्यूनतम मजदूरी अधिनियम",
+        "description": "Fixing minimum wages in employments.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Wage fixation"
+      },
+      {
+        "section": "Equal Remuneration Act 1976",
+        "title": "Equal Remuneration | समान पारिश्रमिक अधिनियम",
+        "description": "Equal pay for equal work for men and women.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Gender equality"
+      },
+      {
+        "section": "Companies Act 2013",
+        "title": "Companies Act | कंपनी अधिनियम",
+        "description": "Law relating to incorporation and regulation of companies.",
+        "type": "special",
+        "category": "Corporate Law",
+        "caseLaw": "Corporate governance"
+      },
+      {
+        "section": "Income Tax Act 1961",
+        "title": "Income Tax Act | आयकर अधिनियम",
+        "description": "Law relating to income tax in India.",
+        "type": "special",
+        "category": "Tax Law",
+        "caseLaw": "Tax assessments"
+      },
+      {
+        "section": "Goods and Services Tax Act 2017",
+        "title": "GST Act | वस्तु एवं सेवा कर अधिनियम",
+        "description": "Law relating to goods and services tax.",
+        "type": "special",
+        "category": "Tax Law",
+        "caseLaw": "GST compliance"
+      },
+      {
+        "section": "Customs Act 1962",
+        "title": "Customs Act | सीमा शुल्क अधिनियम",
+        "description": "Law relating to import and export of goods.",
+        "type": "special",
+        "category": "Tax Law",
+        "caseLaw": "Smuggling"
+      },
+      {
+        "section": "Wildlife Protection Act 1972",
+        "title": "Wildlife Act | वन्यजीव संरक्षण अधिनियम",
+        "description": "Protection of wild animals, birds and plants.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Poaching cases"
+      },
+      {
+        "section": "Environment Protection Act 1986",
+        "title": "Environment Act | पर्यावरण संरक्षण अधिनियम",
+        "description": "Protection and improvement of environment.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Pollution control"
+      },
+      {
+        "section": "Air (Prevention and Control of Pollution) Act 1981",
+        "title": "Air Act | वायु अधिनियम",
+        "description": "Prevention and control of air pollution.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Industrial emissions"
+      },
+      {
+        "section": "Water (Prevention and Control of Pollution) Act 1974",
+        "title": "Water Act | जल अधिनियम",
+        "description": "Prevention and control of water pollution.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Industrial waste"
+      },
+      {
+        "section": "Indian Forest Act 1927",
+        "title": "Forest Act | वन अधिनियम",
+        "description": "Law relating to forests and forest produce.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Forest conservation"
+      },
+      {
+        "section": "Arms Act 1959",
+        "title": "Arms Act | शस्त्र अधिनियम",
+        "description": "Regulation of arms and ammunition.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "3 years to life imprisonment",
+        "caseLaw": "Illegal possession"
+      },
+      {
+        "section": "Explosives Act 1884",
+        "title": "Explosives Act | विस्फोटक अधिनियम",
+        "description": "Regulation of manufacture and possession of explosives.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Bomb blasts"
+      },
+      {
+        "section": "Terrorist and Disruptive Activities Act 1987",
+        "title": "TADA | आतंकवादी अधिनियम",
+        "description": "Special law for terrorism (repealed).",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Historic cases"
+      },
+      {
+        "section": "Prevention of Terrorism Act 2002",
+        "title": "POTA | आतंकवाद निवारण अधिनियम",
+        "description": "Law for prevention of terrorism (repealed 2004).",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Repealed"
+      },
+      {
+        "section": "Unlawful Activities Prevention Act 1967",
+        "title": "UAPA | गैरकानूनी गतिविधियाँ अधिनियम",
+        "description": "Prevention of unlawful activities and terrorism.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "5 years to life imprisonment",
+        "caseLaw": "Bail strict"
+      },
+      {
+        "section": "National Security Act 1980",
+        "title": "NSA | राष्ट्रीय सुरक्षा अधिनियम",
+        "description": "Preventive detention for national security.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Preventive detention"
+      },
+      {
+        "section": "Maintenance of Internal Security Act 1971",
+        "title": "MISA | आंतरिक सुरक्षा अधिनियम",
+        "description": "Preventive detention during emergency (repealed).",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Emergency"
+      },
+      {
+        "section": "Indian Succession Act 1925",
+        "title": "Succession Act | उत्तराधिकार अधिनियम",
+        "description": "Law of succession for Christians and others.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Wills"
+      },
+      {
+        "section": "Indian Divorce Act 1869",
+        "title": "Divorce Act | तलाक अधिनियम",
+        "description": "Law relating to divorce for Christians.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Christian divorce"
+      },
+      {
+        "section": "Parsi Marriage and Divorce Act 1936",
+        "title": "Parsi Act | पारसी विवाह अधिनियम",
+        "description": "Marriage and divorce among Parsis.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Parsi law"
+      },
+      {
+        "section": "Muslim Personal Law (Shariat) Application Act 1937",
+        "title": "Muslim Personal Law | मुस्लिम व्यक्तिगत कानून",
+        "description": "Application of Muslim Personal Law.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Triple talaq"
+      },
+      {
+        "section": "Dissolution of Muslim Marriages Act 1939",
+        "title": "Muslim Divorce | मुस्लिम तलाक अधिनियम",
+        "description": "Grounds for dissolution of Muslim marriages.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Wife's rights"
+      },
+      {
+        "section": "Muslim Women (Protection of Rights on Divorce) Act 1986",
+        "title": "Muslim Women Act | मुस्लिम महिला अधिनियम",
+        "description": "Rights of divorced Muslim women.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Shah Bano aftermath"
+      },
+      {
+        "section": "Special Marriage Act 1954",
+        "title": "Special Marriage | विशेष विवाह अधिनियम",
+        "description": "Marriage between persons of different religions.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Inter-religion marriage"
+      },
+      {
+        "section": "Foreign Marriage Act 1969",
+        "title": "Foreign Marriage | विदेश विवाह अधिनियम",
+        "description": "Marriage of Indian citizens abroad.",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Overseas marriage"
+      },
+      {
+        "section": "Child Marriage Restraint Act 1929",
+        "title": "Child Marriage | बाल विवाह अधिनियम",
+        "description": "Restraint of child marriages (replaced by Prohibition of Child Marriage Act).",
+        "type": "special",
+        "category": "Family Law",
+        "caseLaw": "Historic"
+      },
+      {
+        "section": "Prohibition of Child Marriage Act 2006",
+        "title": "Child Marriage Prohibition | बाल विवाह निषेध अधिनियम",
+        "description": "Prohibition of child marriages.",
+        "type": "special",
+        "category": "Family Law",
+        "punishment": "2 years + fine",
+        "caseLaw": "Voidable marriages"
+      },
+      {
+        "section": "Medical Termination of Pregnancy Act 1971",
+        "title": "MTP Act | चिकित्सकीय समापन अधिनियम",
+        "description": "Regulation of termination of pregnancy.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Abortion rights"
+      },
+      {
+        "section": "Pre-Conception and Pre-Natal Diagnostic Techniques Act 1994",
+        "title": "PCPNDT Act | पूर्व गर्भाधान अधिनियम",
+        "description": "Prohibition of sex selection and prenatal sex determination.",
+        "type": "special",
+        "category": "Medical Law",
+        "punishment": "3-5 years + fine",
+        "caseLaw": "Female foeticide"
+      },
+      {
+        "section": "Clinical Establishments Act 2010",
+        "title": "Clinical Establishments | चिकित्सा संस्थान अधिनियम",
+        "description": "Registration and regulation of clinical establishments.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Hospital regulation"
+      },
+      {
+        "section": "Indian Medical Council Act 1956",
+        "title": "Medical Council | चिकित्सा परिषद अधिनियम",
+        "description": "Regulation of medical education and profession.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Doctor regulation"
+      },
+      {
+        "section": "Advocates Act 1961",
+        "title": "Advocates Act | अधिवक्ता अधिनियम",
+        "description": "Law relating to legal practitioners.",
+        "type": "special",
+        "category": "Legal Profession",
+        "caseLaw": "Bar Council"
+      },
+      {
+        "section": "Legal Services Authorities Act 1987",
+        "title": "Legal Services | विधिक सेवा अधिनियम",
+        "description": "Free legal services to eligible persons.",
+        "type": "special",
+        "category": "Legal Profession",
+        "caseLaw": "Lok Adalats"
+      },
+      {
+        "section": "Contempt of Courts Act 1971",
+        "title": "Contempt of Court | न्यायालय अवमानना अधिनियम",
+        "description": "Punishment for contempt of court.",
+        "type": "special",
+        "category": "Legal Profession",
+        "punishment": "6 months + fine",
+        "caseLaw": "Scandalizing court"
+      },
+      {
+        "section": "Limitation Act 1963",
+        "title": "Limitation Act | परिसीमा अधिनियम",
+        "description": "Time limits for filing suits and applications.",
+        "type": "special",
+        "category": "Procedural Law",
+        "caseLaw": "Condonation of delay"
+      },
+      {
+        "section": "Court Fees Act 1870",
+        "title": "Court Fees | न्यायालय शुल्क अधिनियम",
+        "description": "Collection of fees in courts.",
+        "type": "special",
+        "category": "Procedural Law",
+        "caseLaw": "Suits valuation"
+      },
+      {
+        "section": "Suits Valuation Act 1887",
+        "title": "Suits Valuation | वाद मूल्यांकन अधिनियम",
+        "description": "Valuation of suits for jurisdiction.",
+        "type": "special",
+        "category": "Procedural Law",
+        "caseLaw": "Court jurisdiction"
+      },
+      {
+        "section": "Registration Act 1908",
+        "title": "Registration Act | पंजीकरण अधिनियम",
+        "description": "Registration of documents.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Document validity"
+      },
+      {
+        "section": "Indian Stamp Act 1899",
+        "title": "Stamp Act | स्टाम्प अधिनियम",
+        "description": "Stamp duty on instruments.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Insufficient stamp"
+      },
+      {
+        "section": "Specific Relief Act 1963",
+        "title": "Specific Relief | विशिष्ट अनुतोष अधिनियम",
+        "description": "Specific performance of contracts and injunctions.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Contract enforcement"
+      },
+      {
+        "section": "Sale of Goods Act 1930",
+        "title": "Sale of Goods | माल विक्रय अधिनियम",
+        "description": "Law relating to sale of goods.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Warranty"
+      },
+      {
+        "section": "Partnership Act 1932",
+        "title": "Partnership Act | भागीदारी अधिनियम",
+        "description": "Law relating to partnerships.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Partner liability"
+      },
+      {
+        "section": "Negotiable Instruments Act 1881",
+        "title": "NI Act | परक्राम्य लिखत अधिनियम",
+        "description": "Law relating to promissory notes, bills of exchange, cheques.",
+        "type": "special",
+        "category": "Commercial Law",
+        "punishment": "Section 138 - 2 years + fine",
+        "caseLaw": "Cheque bounce"
+      },
+      {
+        "section": "Bankers' Books Evidence Act 1891",
+        "title": "Bankers' Books | बैंकर पुस्तक साक्ष्य अधिनियम",
+        "description": "Evidence from bankers' books.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Bank statements"
+      },
+      {
+        "section": "Reserve Bank of India Act 1934",
+        "title": "RBI Act | भारतीय रिजर्व बैंक अधिनियम",
+        "description": "Constitution and functions of RBI.",
+        "type": "special",
+        "category": "Banking Law",
+        "caseLaw": "Monetary policy"
+      },
+      {
+        "section": "Banking Regulation Act 1949",
+        "title": "Banking Act | बैंकिंग विनियमन अधिनियम",
+        "description": "Regulation of banking companies.",
+        "type": "special",
+        "category": "Banking Law",
+        "caseLaw": "Banking operations"
+      },
+      {
+        "section": "Securitization and Reconstruction of Financial Assets and Enforcement of Security Interest Act 2002",
+        "title": "SARFAESI Act | सरफेसी अधिनियम",
+        "description": "Enforcement of security interests by banks.",
+        "type": "special",
+        "category": "Banking Law",
+        "caseLaw": "Asset recovery"
+      },
+      {
+        "section": "Recovery of Debts Due to Banks and Financial Institutions Act 1993",
+        "title": "DRT Act | ऋण वसूली अधिनियम",
+        "description": "Recovery of debts due to banks.",
+        "type": "special",
+        "category": "Banking Law",
+        "caseLaw": "Debt recovery tribunals"
+      },
+      {
+        "section": "Insolvency and Bankruptcy Code 2016",
+        "title": "IBC | दिवाला और दिवालियापन संहिता",
+        "description": "Insolvency resolution for companies and individuals.",
+        "type": "special",
+        "category": "Corporate Law",
+        "caseLaw": "Corporate insolvency"
+      },
+      {
+        "section": "Competition Act 2002",
+        "title": "Competition Act | प्रतिस्पर्धा अधिनियम",
+        "description": "Prevention of anti-competitive practices.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Monopoly"
+      },
+      {
+        "section": "Foreign Exchange Management Act 1999",
+        "title": "FEMA | विदेशी मुद्रा प्रबंधन अधिनियम",
+        "description": "Regulation of foreign exchange.",
+        "type": "special",
+        "category": "Commercial Law",
+        "caseLaw": "Foreign investment"
+      },
+      {
+        "section": "Prevention of Money Laundering Act 2002",
+        "title": "PMLA | धन शोधन निवारण अधिनियम",
+        "description": "Prevention of money laundering.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "3-7 years + fine",
+        "caseLaw": "Attachment of property"
+      },
+      {
+        "section": "Benami Transactions (Prohibition) Act 1988",
+        "title": "Benami Act | बेनामी लेनदेन अधिनियम",
+        "description": "Prohibition of benami transactions.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Benami property"
+      },
+      {
+        "section": "Real Estate (Regulation and Development) Act 2016",
+        "title": "RERA | रियल एस्टेट अधिनियम",
+        "description": "Regulation of real estate sector.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Builder-buyer disputes"
+      },
+      {
+        "section": "Copyright Act 1957",
+        "title": "Copyright Act | कॉपीराइट अधिनियम",
+        "description": "Protection of copyright in literary and artistic works.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "RG Anand v. Delux Films (1978) - Copyright infringement"
+      },
+      {
+        "section": "Patents Act 1970",
+        "title": "Patents Act | पेटेंट अधिनियम",
+        "description": "Protection of inventions by patents.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "Novartis v. Union of India (2013) - Patentability"
+      },
+      {
+        "section": "Trade Marks Act 1999",
+        "title": "Trade Marks | व्यापार चिह्न अधिनियम",
+        "description": "Registration and protection of trademarks.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "Passing off"
+      },
+      {
+        "section": "Designs Act 2000",
+        "title": "Designs Act | डिजाइन अधिनियम",
+        "description": "Protection of industrial designs.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "Design infringement"
+      },
+      {
+        "section": "Geographical Indications of Goods Act 1999",
+        "title": "GI Act | भौगोलिक संकेत अधिनियम",
+        "description": "Protection of geographical indications.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "Darjeeling tea"
+      },
+      {
+        "section": "Protection of Plant Varieties and Farmers' Rights Act 2001",
+        "title": "Plant Varieties | पादप किस्म अधिनियम",
+        "description": "Protection of plant varieties and farmers' rights.",
+        "type": "special",
+        "category": "IPR Law",
+        "caseLaw": "Farmer rights"
+      },
+      {
+        "section": "Biological Diversity Act 2002",
+        "title": "Biodiversity Act | जैव विविधता अधिनियम",
+        "description": "Conservation of biological diversity.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Access to biological resources"
+      },
+      {
+        "section": "Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act 1989",
+        "title": "SC/ST Act | अनुसूचित जाति/जनजाति अधिनियम",
+        "description": "Prevention of atrocities against SCs and STs.",
+        "type": "special",
+        "category": "Social Justice",
+        "punishment": "6 months to life imprisonment",
+        "caseLaw": "Atrocity prevention"
+      },
+      {
+        "section": "Protection of Civil Rights Act 1955",
+        "title": "Civil Rights | नागरिक अधिकार संरक्षण अधिनियम",
+        "description": "Punishment for untouchability.",
+        "type": "special",
+        "category": "Social Justice",
+        "caseLaw": "Untouchability abolition"
+      },
+      {
+        "section": "Equal Remuneration Act 1976",
+        "title": "Equal Remuneration | समान पारिश्रमिक अधिनियम",
+        "description": "Equal pay for equal work.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Gender discrimination"
+      },
+      {
+        "section": "Maternity Benefit Act 1961",
+        "title": "Maternity Benefit | मातृत्व लाभ अधिनियम",
+        "description": "Maternity benefits to women employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Maternity leave"
+      },
+      {
+        "section": "Payment of Bonus Act 1965",
+        "title": "Bonus Act | बोनस अधिनियम",
+        "description": "Payment of bonus to employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Bonus eligibility"
+      },
+      {
+        "section": "Payment of Wages Act 1936",
+        "title": "Wages Act | मजदूरी भुगतान अधिनियम",
+        "description": "Regulation of payment of wages.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Wage deduction"
+      },
+      {
+        "section": "Workmen's Compensation Act 1923",
+        "title": "Compensation Act | कर्मकार क्षतिपूर्ति अधिनियम",
+        "description": "Compensation to workmen for injury.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Industrial accidents"
+      },
+      {
+        "section": "Employees' State Insurance Act 1948",
+        "title": "ESI Act | कर्मचारी राज्य बीमा अधिनियम",
+        "description": "Health insurance for employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "ESI benefits"
+      },
+      {
+        "section": "Factories Act 1948",
+        "title": "Factories Act | कारखाना अधिनियम",
+        "description": "Health and safety in factories.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Working conditions"
+      },
+      {
+        "section": "Contract Labour (Regulation and Abolition) Act 1970",
+        "title": "Contract Labour | संविदा श्रम अधिनियम",
+        "description": "Regulation of contract labour.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Abolition"
+      },
+      {
+        "section": "Child Labour (Prohibition and Regulation) Act 1986",
+        "title": "Child Labour | बाल श्रम अधिनियम",
+        "description": "Prohibition of child labour.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Child rights"
+      },
+      {
+        "section": "Bonded Labour System (Abolition) Act 1976",
+        "title": "Bonded Labour | बंधुआ मजदूर अधिनियम",
+        "description": "Abolition of bonded labour.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Rehabilitation"
+      },
+      {
+        "section": "Inter-State Migrant Workmen Act 1979",
+        "title": "Migrant Workmen | प्रवासी श्रमिक अधिनियम",
+        "description": "Protection of inter-state migrant workmen.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Migrant rights"
+      },
+      {
+        "section": "Building and Other Construction Workers Act 1996",
+        "title": "Construction Workers | निर्माण श्रमिक अधिनियम",
+        "description": "Safety and welfare of construction workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Site safety"
+      },
+      {
+        "section": "Motor Transport Workers Act 1961",
+        "title": "Transport Workers | मोटर परिवहन श्रमिक अधिनियम",
+        "description": "Welfare of motor transport workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Working hours"
+      },
+      {
+        "section": "Mines Act 1952",
+        "title": "Mines Act | खान अधिनियम",
+        "description": "Safety in mines.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Mining accidents"
+      },
+      {
+        "section": "Plantations Labour Act 1951",
+        "title": "Plantations Act | बागान श्रम अधिनियम",
+        "description": "Welfare of plantation workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Tea estates"
+      },
+      {
+        "section": "Beedi and Cigar Workers Act 1966",
+        "title": "Beedi Workers | बीड़ी श्रमिक अधिनियम",
+        "description": "Welfare of beedi workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Home workers"
+      },
+      {
+        "section": "Dock Workers Act 1986",
+        "title": "Dock Workers | गोदी श्रमिक अधिनियम",
+        "description": "Safety of dock workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Ports"
+      },
+      {
+        "section": "Cine Workers and Cinema Theatre Workers Act 1981",
+        "title": "Cine Workers | सिने कर्मकार अधिनियम",
+        "description": "Welfare of cine workers.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Film industry"
+      },
+      {
+        "section": "Working Journalists and Other Newspaper Employees Act 1955",
+        "title": "Journalists Act | पत्रकार अधिनियम",
+        "description": "Working conditions of journalists.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Press freedom"
+      },
+      {
+        "section": "Sales Promotion Employees Act 1976",
+        "title": "Sales Promotion | विक्रय संवर्धन अधिनियम",
+        "description": "Conditions of sales promotion employees.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Commission"
+      },
+      {
+        "section": "Industrial Employment (Standing Orders) Act 1946",
+        "title": "Standing Orders | औद्योगिक रोजगार अधिनियम",
+        "description": "Conditions of employment in industrial establishments.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Service rules"
+      },
+      {
+        "section": "Trade Unions Act 1926",
+        "title": "Trade Unions | ट्रेड यूनियन अधिनियम",
+        "description": "Registration of trade unions.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Union rights"
+      },
+      {
+        "section": "Weekly Holidays Act 1942",
+        "title": "Holidays Act | साप्ताहिक अवकाश अधिनियम",
+        "description": "Weekly holidays in shops and establishments.",
+        "type": "special",
+        "category": "Labour Law",
+        "caseLaw": "Rest day"
+      },
+      {
+        "section": "National Food Security Act 2013",
+        "title": "Food Security | खाद्य सुरक्षा अधिनियम",
+        "description": "Right to food and food security.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Subsidized food"
+      },
+      {
+        "section": "Right of Children to Free and Compulsory Education Act 2009",
+        "title": "RTE Act | शिक्षा का अधिकार अधिनियम",
+        "description": "Free and compulsory education for children.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Article 21A"
+      },
+      {
+        "section": "Mahatma Gandhi National Rural Employment Guarantee Act 2005",
+        "title": "MGNREGA | राष्ट्रीय ग्रामीण रोजगार अधिनियम",
+        "description": "Guarantee of rural employment.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Wage guarantee"
+      },
+      {
+        "section": "National Rural Employment Guarantee Act 2005",
+        "title": "NREGA | रोजगार गारंटी अधिनियम",
+        "description": "100 days employment guarantee in rural areas.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Wage payment"
+      },
+      {
+        "section": "Food Safety and Standards Act 2006",
+        "title": "FSS Act | खाद्य सुरक्षा अधिनियम",
+        "description": "Regulation of food safety and standards.",
+        "type": "special",
+        "category": "Consumer Law",
+        "caseLaw": "Food adulteration"
+      },
+      {
+        "section": "Legal Metrology Act 2009",
+        "title": "Legal Metrology | विधिक मापविज्ञान अधिनियम",
+        "description": "Standards of weights and measures.",
+        "type": "special",
+        "category": "Consumer Law",
+        "caseLaw": "Packaging rules"
+      },
+      {
+        "section": "Bureau of Indian Standards Act 2016",
+        "title": "BIS Act | भारतीय मानक ब्यूरो अधिनियम",
+        "description": "Standardization and quality certification.",
+        "type": "special",
+        "category": "Consumer Law",
+        "caseLaw": "ISI mark"
+      },
+      {
+        "section": "Drugs and Cosmetics Act 1940",
+        "title": "Drugs Act | औषधि अधिनियम",
+        "description": "Regulation of drugs and cosmetics.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Spurious drugs"
+      },
+      {
+        "section": "Pharmacy Act 1948",
+        "title": "Pharmacy Act | फार्मेसी अधिनियम",
+        "description": "Regulation of pharmacy profession.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Pharmacist registration"
+      },
+      {
+        "section": "Dentists Act 1948",
+        "title": "Dentists Act | दंत चिकित्सक अधिनियम",
+        "description": "Regulation of dental profession.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Dental council"
+      },
+      {
+        "section": "Nurses Act 1947",
+        "title": "Nurses Act | नर्स अधिनियम",
+        "description": "Regulation of nursing profession.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Nursing standards"
+      },
+      {
+        "section": "Indian Veterinary Council Act 1984",
+        "title": "Veterinary Act | पशु चिकित्सा अधिनियम",
+        "description": "Regulation of veterinary profession.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Animal health"
+      },
+      {
+        "section": "Transplantation of Human Organs Act 1994",
+        "title": "Organ Transplant | अंग प्रत्यारोपण अधिनियम",
+        "description": "Regulation of organ transplantation.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Organ donation"
+      },
+      {
+        "section": "Mental Healthcare Act 2017",
+        "title": "Mental Health | मानसिक स्वास्थ्य अधिनियम",
+        "description": "Rights of persons with mental illness.",
+        "type": "special",
+        "category": "Medical Law",
+        "caseLaw": "Mental health rights"
+      },
+      {
+        "section": "Persons with Disabilities Act 1995",
+        "title": "Disability Act | विकलांग व्यक्ति अधिनियम",
+        "description": "Rights of persons with disabilities.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Accessibility"
+      },
+      {
+        "section": "Rehabilitation Council of India Act 1992",
+        "title": "Rehabilitation | पुनर्वास परिषद अधिनियम",
+        "description": "Regulation of rehabilitation professionals.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Therapist registration"
+      },
+      {
+        "section": "Maintenance and Welfare of Parents and Senior Citizens Act 2007",
+        "title": "Senior Citizens | वरिष्ठ नागरिक अधिनियम",
+        "description": "Maintenance and welfare of senior citizens.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Parent maintenance"
+      },
+      {
+        "section": "Juvenile Justice (Care and Protection of Children) Act 2015",
+        "title": "Juvenile Justice | किशोर न्याय अधिनियम",
+        "description": "Care and protection of children.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Child in conflict with law"
+      },
+      {
+        "section": "Commissions for Protection of Child Rights Act 2005",
+        "title": "Child Rights | बाल अधिकार आयोग अधिनियम",
+        "description": "Constitution of child rights commission.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Child protection"
+      },
+      {
+        "section": "National Commission for Women Act 1990",
+        "title": "NCW Act | महिला आयोग अधिनियम",
+        "description": "Constitution of National Commission for Women.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Women's rights"
+      },
+      {
+        "section": "National Commission for Minorities Act 1992",
+        "title": "Minorities Act | अल्पसंख्यक आयोग अधिनियम",
+        "description": "Constitution of Minorities Commission.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Minority rights"
+      },
+      {
+        "section": "National Commission for Backward Classes Act 1993",
+        "title": "Backward Classes | पिछड़ा वर्ग आयोग अधिनियम",
+        "description": "Constitution of Backward Classes Commission.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Reservation"
+      },
+      {
+        "section": "National Commission for Scheduled Castes Act 2004",
+        "title": "SC Commission | अनुसूचित जाति आयोग अधिनियम",
+        "description": "Constitution of SC Commission.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "SC rights"
+      },
+      {
+        "section": "National Commission for Scheduled Tribes Act 2004",
+        "title": "ST Commission | अनुसूचित जनजाति आयोग अधिनियम",
+        "description": "Constitution of ST Commission.",
+        "type": "special",
+        "category": "Social Welfare",
+        "caseLaw": "Tribal rights"
+      },
+      {
+        "section": "Protection of Human Rights Act 1993",
+        "title": "Human Rights | मानव अधिकार अधिनियम",
+        "description": "Constitution of National Human Rights Commission.",
+        "type": "special",
+        "category": "Constitutional Law",
+        "caseLaw": "NHRC powers"
+      },
+      {
+        "section": "Commissions of Inquiry Act 1952",
+        "title": "Inquiry Act | जांच आयोग अधिनियम",
+        "description": "Appointment of inquiry commissions.",
+        "type": "special",
+        "category": "Procedural Law",
+        "caseLaw": "Inquiry powers"
+      },
+      {
+        "section": "Public Liability Insurance Act 1991",
+        "title": "Public Liability | लोक दायित्व बीमा अधिनियम",
+        "description": "Insurance for hazardous industries.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Bhopal disaster"
+      },
+      {
+        "section": "National Green Tribunal Act 2010",
+        "title": "NGT Act | राष्ट्रीय हरित अधिकरण अधिनियम",
+        "description": "Establishment of National Green Tribunal.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Environmental cases"
+      },
+      {
+        "section": "Coastal Regulation Zone Notification",
+        "title": "CRZ | तटीय विनियमन अधिसूचना",
+        "description": "Regulation of coastal areas.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Coastal protection"
+      },
+      {
+        "section": "Forest Conservation Act 1980",
+        "title": "Forest Act | वन संरक्षण अधिनियम",
+        "description": "Conservation of forests.",
+        "type": "special",
+        "category": "Environmental Law",
+        "caseLaw": "Deforestation"
+      },
+      {
+        "section": "Mines and Minerals Act 1957",
+        "title": "Mines Act | खान एवं खनिज अधिनियम",
+        "description": "Regulation of mines and minerals.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Mining leases"
+      },
+      {
+        "section": "Oilfields Act 1948",
+        "title": "Oilfields | तेल क्षेत्र अधिनियम",
+        "description": "Regulation of oilfields.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Petroleum"
+      },
+      {
+        "section": "Atomic Energy Act 1962",
+        "title": "Atomic Energy | परमाणु ऊर्जा अधिनियम",
+        "description": "Regulation of atomic energy.",
+        "type": "special",
+        "category": "Special Law",
+        "caseLaw": "Nuclear safety"
+      },
+      {
+        "section": "Electricity Act 2003",
+        "title": "Electricity Act | विद्युत अधिनियम",
+        "description": "Regulation of electricity generation and supply.",
+        "type": "special",
+        "category": "Property Law",
+        "caseLaw": "Power theft"
+      },
+      {
+        "section": "Indian Telegraph Act 1885",
+        "title": "Telegraph Act | तार अधिनियम",
+        "description": "Regulation of telegraph and communication.",
+        "type": "special",
+        "category": "Telecom Law",
+        "caseLaw": "Spectrum"
+      },
+      {
+        "section": "Indian Wireless Telegraphy Act 1933",
+        "title": "Wireless Act | बेतार तार अधिनियम",
+        "description": "Regulation of wireless communication.",
+        "type": "special",
+        "category": "Telecom Law",
+        "caseLaw": "Radio frequency"
+      },
+      {
+        "section": "Cinematograph Act 1952",
+        "title": "Cinema Act | सिनेमैटोग्राफ अधिनियम",
+        "description": "Certification of films for exhibition.",
+        "type": "special",
+        "category": "Media Law",
+        "caseLaw": "Censorship"
+      },
+      {
+        "section": "Press and Registration of Books Act 1867",
+        "title": "Press Act | प्रेस अधिनियम",
+        "description": "Regulation of printing presses and newspapers.",
+        "type": "special",
+        "category": "Media Law",
+        "caseLaw": "Press freedom"
+      },
+      {
+        "section": "Prasar Bharati Act 1990",
+        "title": "Prasar Bharati | प्रसार भारती अधिनियम",
+        "description": "Autonomy to public broadcasting.",
+        "type": "special",
+        "category": "Media Law",
+        "caseLaw": "Doordarshan"
+      },
+      {
+        "section": "Cable Television Networks Act 1995",
+        "title": "Cable TV | केबल टेलीविजन अधिनियम",
+        "description": "Regulation of cable television networks.",
+        "type": "special",
+        "category": "Media Law",
+        "caseLaw": "Content regulation"
+      },
+      {
+        "section": "Sports Broadcasting Signals Act 2007",
+        "title": "Sports Broadcasting | खेल प्रसारण अधिनियम",
+        "description": "Mandatory sharing of sports broadcasting signals.",
+        "type": "special",
+        "category": "Media Law",
+        "caseLaw": "Cricket broadcasting"
+      },
+      {
+        "section": "Delhi Special Police Establishment Act 1946",
+        "title": "DSPE Act | दिल्ली विशेष पुलिस अधिनियम",
+        "description": "Constitution of CBI.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "CBI jurisdiction"
+      },
+      {
+        "section": "Central Vigilance Commission Act 2003",
+        "title": "CVC Act | केंद्रीय सतर्कता आयोग अधिनियम",
+        "description": "Constitution of Central Vigilance Commission.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Anti-corruption"
+      },
+      {
+        "section": "Lokpal and Lokayuktas Act 2013",
+        "title": "Lokpal Act | लोकपाल अधिनियम",
+        "description": "Establishment of Lokpal for corruption complaints.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Ombudsman"
+      },
+      {
+        "section": "Whistle Blowers Protection Act 2014",
+        "title": "Whistle Blower | मुखबिर संरक्षण अधिनियम",
+        "description": "Protection of whistle blowers.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Disclosure protection"
+      },
+      {
+        "section": "Comptroller and Auditor General Act 1971",
+        "title": "CAG Act | नियंत्रक एवं महालेखापरीक्षक अधिनियम",
+        "description": "Duties and powers of CAG.",
+        "type": "special",
+        "category": "Constitutional Law",
+        "caseLaw": "Audit reports"
+      },
+      {
+        "section": "Finance Commission Act 1951",
+        "title": "Finance Commission | वित्त आयोग अधिनियम",
+        "description": "Constitution of Finance Commission.",
+        "type": "special",
+        "category": "Constitutional Law",
+        "caseLaw": "Tax distribution"
+      },
+      {
+        "section": "Election Commission Act 1991",
+        "title": "Election Commission | निर्वाचन आयोग अधिनियम",
+        "description": "Powers of Election Commission.",
+        "type": "special",
+        "category": "Constitutional Law",
+        "caseLaw": "Model code"
+      },
+      {
+        "section": "Representation of the People Act 1950",
+        "title": "RPA 1950 | लोक प्रतिनिधित्व अधिनियम 1950",
+        "description": "Allocation of seats and delimitation of constituencies.",
+        "type": "special",
+        "category": "Election Law",
+        "caseLaw": "Electoral rolls"
+      },
+      {
+        "section": "Representation of the People Act 1951",
+        "title": "RPA 1951 | लोक प्रतिनिधित्व अधिनियम 1951",
+        "description": "Conduct of elections and qualifications for members.",
+        "type": "special",
+        "category": "Election Law",
+        "caseLaw": "Election petitions"
+      },
+      {
+        "section": "Delimitation Act 2002",
+        "title": "Delimitation | परिसीमन अधिनियम",
+        "description": "Delimitation of constituencies.",
+        "type": "special",
+        "category": "Election Law",
+        "caseLaw": "Constituency boundaries"
+      },
+      {
+        "section": "Anti-Defection Law",
+        "title": "Anti-Defection | दलबदल विरोधी कानून",
+        "description": "Tenth Schedule - Disqualification on ground of defection.",
+        "type": "constitution",
+        "category": "Election Law",
+        "caseLaw": "Kihoto Hollohan v. Zachillhu (1992) - Speaker's power"
+      },
+      {
+        "section": "Official Secrets Act 1923",
+        "title": "Official Secrets | राजकीय गोप्य अधिनियम",
+        "description": "Protection of official secrets.",
+        "type": "special",
+        "category": "Criminal Law",
+        "punishment": "3-14 years",
+        "caseLaw": "Espionage"
+      },
+      {
+        "section": "National Security Act 1980",
+        "title": "NSA | राष्ट्रीय सुरक्षा अधिनियम",
+        "description": "Preventive detention for security reasons.",
+        "type": "special",
+        "category": "Criminal Law",
+        "caseLaw": "Preventive detention"
+      }
+    ];
+
+    let currentFilter = 'all';
+    let searchTerm = '';
+
+    function populateLegalCards() {
+      const container = document.getElementById('legalCards');
+      const stats = document.getElementById('stats');
+      
+      let filteredDatabase = completeIndianLegalDatabase;
+      
+      // Apply category filter
+      if (currentFilter !== 'all') {
+        filteredDatabase = filteredDatabase.filter(item => item.type === currentFilter);
+      }
+      
+      // Apply search filter
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filteredDatabase = filteredDatabase.filter(item => 
+          item.section.toLowerCase().includes(term) || 
+          item.title.toLowerCase().includes(term) || 
+          item.description.toLowerCase().includes(term) ||
+          (item.category && item.category.toLowerCase().includes(term))
+        );
+      }
+      
+      stats.textContent = `${filteredDatabase.length} Laws`;
+      
+      if (filteredDatabase.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #666;">No matching laws found. Try different keywords.</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      filteredDatabase.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `legal-card ${item.type}`;
+        card.onclick = () => useSuggestion(`${item.section} - ${item.title}`);
+        
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="section-badge">${item.section}</span>
+            <h4>${item.title}</h4>
+          </div>
+          <p>${item.description}</p>
+          ${item.punishment ? `
+            <div class="punishment-badge">
+              ⚖️ ${item.punishment}
+            </div>
+          ` : ''}
+          ${item.caseLaw ? `
+            <div class="case-law">
+              📜 ${item.caseLaw}
+            </div>
+          ` : ''}
+          <div class="card-footer">
+            <span>${getTypeLabel(item.type)}</span>
+            ${item.category ? `<span>${item.category}</span>` : ''}
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
+
+    function getTypeLabel(type) {
+      const labels = {
+        'constitution': '🇮🇳 Constitution',
+        'ipc': '⚖️ IPC',
+        'crpc': '🔍 CrPC',
+        'evidence': '📋 Evidence Act',
+        'special': '📊 Special Act'
+      };
+      return labels[type] || type;
+    }
+
+    function filterCategory(category) {
+      currentFilter = category;
+      
+      // Update active tab
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      populateLegalCards();
+    }
+
+    function filterSections() {
+      searchTerm = document.getElementById('sectionSearch').value;
+      populateLegalCards();
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        ask();
+      }
+    }
+
+    function useSuggestion(text) {
+      document.getElementById('question').value = text;
+      ask();
+    }
+
+    function showPreamble() {
+      const preamble = "WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC and to secure to all its citizens:\n\nJUSTICE, social, economic and political;\nLIBERTY of thought, expression, belief, faith and worship;\nEQUALITY of status and of opportunity;\nand to promote among them all\nFRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation;\n\nIN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.";
+      
+      document.getElementById('response').innerText = "भारत का संविधान | Constitution of India\n\n" + preamble;
+      document.getElementById('relevantSections').style.display = 'none';
+      document.getElementById('caseLaw').style.display = 'none';
+      document.getElementById('disclaimer').innerText = "The Preamble to the Constitution of India is based on the Objective Resolution moved by Jawaharlal Nehru on December 13, 1946. It was amended by the 42nd Amendment in 1976 to add 'Socialist', 'Secular' and 'Integrity'.";
+    }
+
+    function findRelevantSections(query) {
+      const sections = [];
+      const queryLower = query.toLowerCase();
+      
+      // Search through entire database for matches
+      completeIndianLegalDatabase.forEach(item => {
+        if (queryLower.includes(item.section.toLowerCase()) || 
+            queryLower.includes(item.title.toLowerCase().substring(0, 20)) ||
+            (item.category && queryLower.includes(item.category.toLowerCase()))) {
+          sections.push(item.section);
+        }
+      });
+      
+      // Also check for common keywords
+      const keywordMap = {
+        'murder': ['IPC 302', 'IPC 300'],
+        'हत्या': ['IPC 302', 'IPC 300'],
+        'rape': ['IPC 376', 'IPC 375', 'POCSO'],
+        'बलात्कार': ['IPC 376', 'IPC 375'],
+        'theft': ['IPC 378', 'IPC 379'],
+        'चोरी': ['IPC 378', 'IPC 379'],
+        'cheating': ['IPC 420', 'IPC 415'],
+        'धोखाधड़ी': ['IPC 420'],
+        'dowry': ['IPC 304B', 'IPC 498A', 'Dowry Prohibition'],
+        'दहेज': ['IPC 304B', 'IPC 498A'],
+        'right to life': ['Article 21'],
+        'जीवन का अधिकार': ['Article 21'],
+        'equality': ['Article 14', 'Article 15', 'Article 16'],
+        'समानता': ['Article 14'],
+        'freedom': ['Article 19'],
+        'स्वतंत्रता': ['Article 19'],
+        'arrest': ['CrPC 41', 'CrPC 46', 'CrPC 57'],
+        'गिरफ्तारी': ['CrPC 41'],
+        'bail': ['CrPC 436', 'CrPC 437', 'CrPC 438'],
+        'जमानत': ['CrPC 436', 'CrPC 438'],
+        'evidence': ['IEA 3', 'IEA 5', 'IEA 60'],
+        'साक्ष्य': ['IEA 3'],
+        'divorce': ['Hindu Marriage', 'Special Marriage', 'Indian Divorce'],
+        'तलाक': ['Hindu Marriage'],
+        'contract': ['Indian Contract Act'],
+        'संविदा': ['Indian Contract Act'],
+        'property': ['Transfer of Property', 'IPC 378'],
+        'संपत्ति': ['Transfer of Property'],
+        'cyber crime': ['IT Act 66C', 'IT Act 66D', 'IT Act 67'],
+        'साइबर अपराध': ['IT Act 66C'],
+        'consumer': ['Consumer Protection Act'],
+        'उपभोक्ता': ['Consumer Protection Act'],
+        'labour': ['Factories Act', 'Industrial Disputes', 'Minimum Wages'],
+        'श्रम': ['Factories Act'],
+        'environment': ['Environment Protection', 'Wildlife', 'Air Act'],
+        'पर्यावरण': ['Environment Protection'],
+        'corruption': ['Prevention of Corruption', 'IPC 409'],
+        'भ्रष्टाचार': ['Prevention of Corruption'],
+        'terrorism': ['UAPA', 'IPC 121', 'IPC 
